@@ -32,20 +32,15 @@ function transformArrayToObject(
 
 export const componentsArray: Component[] = [
   {
-    id: "tabs",
-    name: "Tabs",
+    id: "announcement",
+    name: "Announcement",
     icon: "",
     variations: [
-      { id: "pill-transition-tabs", name: "背景移動 Tabs" },
-      { id: "tabs-2", name: "超級 Tabs" },
-      { id: "tabs-3", name: "無敵 Tabs" },
+      {
+        id: "with-shimmer",
+        name: "帶有光澤",
+      },
     ],
-  },
-  {
-    id: "avatar",
-    name: "Avatar",
-    icon: "",
-    variations: [],
   },
 ];
 

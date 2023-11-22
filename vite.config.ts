@@ -1,3 +1,4 @@
+import fs from "node:fs";
 import { unstable_vitePlugin as remix } from "@remix-run/dev";
 import { defineConfig } from "vite";
 import tsconfigPaths from "vite-tsconfig-paths";
@@ -6,6 +7,18 @@ import remarkFrontmatter from "remark-frontmatter";
 import remarkMdxFrontmatter from "remark-mdx-frontmatter";
 import withToc from "@stefanprobst/rehype-extract-toc";
 import withTocExport from "@stefanprobst/rehype-extract-toc/mdx";
+import rehypePrettyCode from "rehype-pretty-code";
+
+/** @type {import('rehype-pretty-code').Options} */
+const prettyCodeOptions = {
+  keepBackground: false,
+  theme: JSON.parse(
+    fs.readFileSync(
+      new URL("./app/assets/theme.json", import.meta.url),
+      "utf-8"
+    )
+  ),
+};
 
 export default defineConfig({
   plugins: [
@@ -13,7 +26,12 @@ export default defineConfig({
     tsconfigPaths(),
     mdx({
       remarkPlugins: [remarkFrontmatter, remarkMdxFrontmatter],
-      rehypePlugins: [withToc, withTocExport],
+      // FIXME
+      rehypePlugins: [
+        withToc,
+        withTocExport,
+        [rehypePrettyCode, prettyCodeOptions],
+      ],
     }),
   ],
 });

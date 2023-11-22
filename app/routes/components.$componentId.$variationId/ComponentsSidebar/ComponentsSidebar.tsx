@@ -17,7 +17,15 @@ function ComponentsSidebar({
         <div key={component.id}>
           <div className="flex items-center space-x-1">
             <IconPlaceholder />
-            <div className="text-gray-700">{component.name}</div>
+            <div
+              className={cn(
+                defaultActiveComponentID === component.id
+                  ? "font-medium"
+                  : "bg-slate-700"
+              )}
+            >
+              {component.name}
+            </div>
           </div>
 
           {component.id === defaultActiveComponentID && (
@@ -26,10 +34,10 @@ function ComponentsSidebar({
                 <div
                   key={variation.id}
                   className={cn(
-                    "flex items-center pl-[25px] py-2 rounded-md",
+                    "flex items-center pl-6 py-2 rounded-md",
                     defaultActiveVariationID === variation.id
-                      ? "font-medium text-gray-900 bg-gray-100"
-                      : "text-gray-500 hover:bg-gray-50 hover:text-gray-700 cursor-pointer"
+                      ? "font-bold bg-slate-100"
+                      : "text-slate-500 hover:bg-slate-50 hover:text-slate-700 cursor-pointer"
                   )}
                 >
                   {variation.name}

@@ -1,0 +1,141 @@
+import { Demo } from './Demo'
+import { Tools } from '../../../components/Tools'
+
+<Demo />
+
+# 帶有光澤的 Announcement
+
+<Tools includes={['tailwindcss']}/>
+
+## 介紹
+
+這個 component 是在基礎 Announcement component 上加入一點光澤，適合用來宣布重大消息。
+
+## Step 1: 製作基礎 Annoucement
+
+```html
+<div class="inline-block px-4 py-1.5 rounded-full bg-slate-900 font-medium text-xs text-sky-200">
+  Meet Whimsy AI: your playful, creative coding pal!
+</div>
+```
+
+- `inline-block` 讓 Announcement 寬度等於內容寬度
+
+## Step 2: 製作光澤
+
+光澤我們用偽元素 `before` 來實作，使裝飾用 element 不會影響 user 的 keyboard navigation 及 accessibility。
+
+另外，因為 `::before` 會出現在 Announcement 裡、字的上面，為了確保光澤的 style 與 Announcement 內容的 style 互不影響，我們將內容的 style 放在另一個 element 裡。
+
+```html
+<div class="inline-block px-4 py-1.5 rounded-full bg-slate-900">
+  <!-- ::before 會出現在這裡 -->
+  <p class="font-medium text-xs text-sky-200">Meet Whimsy AI: your playful, creative coding pal!</p>
+</div>
+```
+
+光澤本身實作非常簡單，基本就是一個向右的漸層：
+
+```html
+<div class="... relative before:absolute before:inset-0 before:bg-gradient-to-r before:from-sky-400/0 before:via-sky-400/40 before:to-sky-400/0">
+  ...
+</div>
+```
+
+- 不用加 `content: ""`，因為 tailwind 的預設 style 有加 `::before, ::after {--tw-content: ''}`
+- 用 `absolute` 定位，讓光澤可以脫離正常 layout，浮在 Annoncement 上方
+
+再來有個小問題要解決，我們想讓光澤浮在 Announcement 的背景之上，但不想要它浮在字的上面，這樣會降低字的清晰度。我們可以這樣解決：
+
+```html
+<div class="...">
+  <!-- ::before -->
+  <p class="... relative">Meet Whimsy AI: your playful, creative coding pal!</p>
+</div>
+```
+
+- 由於光澤與 span element 都是 non-static position element，因此會採用結構上愈下面的 element 渲染在愈上面的規則，也就是字會渲染在光澤上面
+
+## Step 3: 加上動畫
+
+為了讓 Announcement 有真的在閃耀的感覺，我們要加 2 個動畫：
+
+1. 呼吸燈：將 Announcement 上的所有顏色以一定的節奏明暗變化，呈現閃爍的感覺
+2. 跑馬燈：讓光澤從左跑到右，呈現如金屬光澤在燈光下的閃耀感
+
+我們先從呼吸燈做起：
+
+```html /animate-[shine_4s_ease-in-out_infinite]/
+<style>
+  @keyframes shine {
+    0% {
+      filter: brightness(100%);
+    }
+    50% {
+      filter: brightness(150%);
+    }
+    100% {
+      filter: brightness(100%);
+    }
+  }
+</style>
+
+<div class="... animate-[shine_4s_ease-in-out_infinite]">
+  ...
+</div>
+```
+
+- 這裡用的是 arbitrary values，你也可以將動畫配置在 config file，可參考[這裡](https://tailwindcss.com/docs/animation#customizing-your-theme)
+
+再來做光澤跑馬燈：
+
+```html /before:animate-[shimmer_4s_ease-in-out_infinite]/
+<style>
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+</style>
+
+<div class="... before:-translate-x-full before:animate-[shimmer_4s_ease-in-out_infinite] overflow-hidden">
+  ...
+</div>
+```
+
+- `before:-translate-x-full` 作用是將光澤先整條推到 Announcement 外面，之後再隨 animation 進來，最後則會整條到 Announcement 右側 (`translateX(100%)`)，完成一次完整的 animation
+- `overflow-hidden` 是讓光澤在 Announcement 範圍外的地方不可見
+
+## Final Code
+
+```html
+<style>
+  @keyframes shimmer {
+    100% {
+      transform: translateX(100%);
+    }
+  }
+
+  @keyframes shine {
+    0% {
+      filter: brightness(100%);
+    }
+    50% {
+      filter: brightness(150%);
+    }
+    100% {
+      filter: brightness(100%);
+    }
+  }
+</style>
+
+<div class="before:animate-[shimmer_4s_ease-in-out_infinite] animate-[shine_4s_ease-in-out_infinite] relative inline-block overflow-hidden rounded-full bg-slate-900 px-4 py-1.5 before:absolute before:inset-0 before:-translate-x-full before:bg-gradient-to-r before:from-sky-400/0 before:via-sky-400/40 before:to-sky-400/0">
+  <p class="relative text-xs font-medium text-sky-200">
+    Meet Whimsy AI: your playful, creative coding pal!
+  </p>
+</div>
+```
+
+## 現實範例
+
+Fig

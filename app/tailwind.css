@@ -20,7 +20,7 @@
   }
 
   body {
-    @apply leading-normal antialiased min-h-full transition-colors text-gray-900;
+    @apply leading-normal antialiased min-h-full transition-colors text-slate-900;
   }
 
   img,
@@ -58,4 +58,28 @@
   .root {
     @apply isolate;
   }
+}
+
+@layer utilities {
+  .border-pretty {
+    border-color: rgba(0, 0, 0, 0.08);
+  }
+
+  .shadow-pretty {
+    @apply bg-clip-padding;
+    box-shadow: 0px 1px 0px -1px rgba(0, 0, 0, 0.05), 0px 1px 1px -1px rgba(0, 0, 0, 0.05), 0px 1px 2px -1px rgba(0, 0, 0, 0.05), 0px 2px 4px -2px rgba(0, 0, 0, 0.05), 0px 3px 6px -3px rgba(0, 0, 0, 0.05);
+  }
+}
+
+[data-highlighted-line] {
+  @apply bg-[#49505b];
+}
+
+[data-line] {
+  @apply border-l-2 border-l-transparent px-6;
+}
+
+[data-highlighted-chars] {
+  @apply bg-sky-300/20 rounded;
+  box-shadow: 0 0 0 4px rgb(125 211 252 / 0.2);
 }

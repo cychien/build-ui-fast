@@ -14,7 +14,10 @@ export default {
       },
     },
     colors: {
-      gray: colors.slate,
+      transparent: colors.transparent,
+      white: colors.white,
+      slate: colors.slate,
+      sky: colors.sky,
     },
     extend: {
       screens: {
