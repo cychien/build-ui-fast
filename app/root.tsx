@@ -1,3 +1,4 @@
+import "./tailwind.css";
 import {
   Links,
   LiveReload,
@@ -6,8 +7,9 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import "./tailwind.css";
-import { Header } from "~/components/Header";
+import { Header } from "~/components/builduifast/headers/FullWidthNavigationHeader";
+
+// import { Header } from "~/components/Header";
 
 export default function App() {
   return (
@@ -20,9 +22,7 @@ export default function App() {
       </head>
       <body>
         <Header />
-        <div className="min-h-[calc(100%_-_65px)]">
-          <Outlet />
-        </div>
+        <Outlet />
         <ScrollRestoration />
         <Scripts />
         <LiveReload />

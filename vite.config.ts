@@ -11,13 +11,7 @@ import rehypePrettyCode from "rehype-pretty-code";
 
 /** @type {import('rehype-pretty-code').Options} */
 const prettyCodeOptions = {
-  keepBackground: false,
-  theme: JSON.parse(
-    fs.readFileSync(
-      new URL("./app/assets/theme.json", import.meta.url),
-      "utf-8"
-    )
-  ),
+  theme: "material-theme",
 };
 
 export default defineConfig({
