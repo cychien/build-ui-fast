@@ -7,9 +7,7 @@ import {
   Scripts,
   ScrollRestoration,
 } from "@remix-run/react";
-import { Header } from "~/components/builduifast/headers/FullWidthNavigationHeader";
-
-// import { Header } from "~/components/Header";
+import { Header } from "~/components/site/Header";
 
 export default function App() {
   return (
