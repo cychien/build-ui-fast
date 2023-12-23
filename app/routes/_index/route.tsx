@@ -96,7 +96,7 @@ export default function Index() {
               replace
               className="flex flex-col gap-4 md:flex-row"
             >
-              <div className="relative">
+              <div className="relative -z-[5]">
                 <input
                   ref={inputRef}
                   type="email"
@@ -119,7 +119,7 @@ export default function Index() {
               </div>
               <Button
                 type="submit"
-                className="relative flex-shrink-0"
+                className="relative -z-[5] flex-shrink-0"
                 size="xl"
               >
                 <span className={cn({ invisible: state === "submitting" })}>

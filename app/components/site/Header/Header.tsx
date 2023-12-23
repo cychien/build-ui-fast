@@ -22,7 +22,7 @@ function Header() {
   const [activeNavItem, setActiveNavItem] = React.useState<string>();
 
   return (
-    <header className="isolate">
+    <header className="isolate z-50">
       <NavigationMenu.Root
         value={activeNavItem}
         onValueChange={(v) => setActiveNavItem(v)}
@@ -104,9 +104,9 @@ function Header() {
                                     viewBox="0 0 24 24"
                                     fill="none"
                                     stroke="currentColor"
-                                    stroke-width="2"
-                                    stroke-linecap="round"
-                                    stroke-linejoin="round"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
                                     className="text-primary-600 h-6 w-6 flex-shrink-0"
                                   >
                                     <rect
@@ -283,9 +283,9 @@ function Header() {
                                             viewBox="0 0 24 24"
                                             fill="none"
                                             stroke="currentColor"
-                                            stroke-width="2"
-                                            stroke-linecap="round"
-                                            stroke-linejoin="round"
+                                            strokeWidth="2"
+                                            strokeLinecap="round"
+                                            strokeLinejoin="round"
                                             className="text-primary-600 h-6 w-6 flex-shrink-0"
                                           >
                                             <rect
