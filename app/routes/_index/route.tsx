@@ -148,7 +148,7 @@ export default function Index() {
             <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
               <Blocks className="h-6 w-6" />
             </div>
-            <div className="mt-12 text-xl font-semibold leading-normal lg:mt-16">
+            <div className="mt-12 text-xl font-semibold leading-normal">
               開發效率高且易於修改
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
@@ -162,7 +162,7 @@ export default function Index() {
             <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
               <Layers className="h-6 w-6" />
             </div>
-            <div className="mt-12 text-xl font-semibold leading-normal lg:mt-16">
+            <div className="mt-12 text-xl font-semibold leading-normal">
               樣式繁多
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
@@ -175,7 +175,7 @@ export default function Index() {
             <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
               <Zap className="h-6 w-6" />
             </div>
-            <div className="mt-12 text-xl font-semibold leading-normal lg:mt-16">
+            <div className="mt-12 text-xl font-semibold leading-normal">
               更新快速
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
@@ -187,7 +187,7 @@ export default function Index() {
             <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
               <Globe className="h-6 w-6" />
             </div>
-            <div className="mt-12 text-xl font-semibold leading-normal lg:mt-16">
+            <div className="mt-12 text-xl font-semibold leading-normal">
               為中文而生
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
