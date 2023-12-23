@@ -19,6 +19,8 @@ export default {
       white: colors.white,
       slate: colors.slate,
       gray: colors.gray,
+      error: colors.red,
+      success: colors.green,
       primary: {
         50: "#eff8ff",
         100: "#d1e9ff",

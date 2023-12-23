@@ -1,8 +1,26 @@
-import type { MetaFunction } from "@remix-run/node";
-import { Blocks, Globe, HeartHandshake, Layers, Zap } from "lucide-react";
+import { Spinner } from "./Spinner";
+import type { ActionFunction, MetaFunction } from "@remix-run/node";
+import { Form, useActionData, useNavigation } from "@remix-run/react";
+import {
+  Blocks,
+  CheckCircle,
+  Globe,
+  HeartHandshake,
+  Layers,
+  Zap,
+} from "lucide-react";
+import * as React from "react";
 import bgMobileSrc from "~/assets/bg-mobile.png";
 import bgSrc from "~/assets/bg.png";
 import { Button } from "~/components/site/Button";
+import { CreateContactResult, createContact } from "~/services/loops";
+import { cn } from "~/utils/cn";
+
+export const action: ActionFunction = async ({ request }) => {
+  const formData = await request.formData();
+  const email = formData.get("email") as string;
+  return await createContact({ email, subscribed: true });
+};
 
 export const meta: MetaFunction = () => {
   return [
@@ -12,6 +30,25 @@ export const meta: MetaFunction = () => {
 };
 
 export default function Index() {
+  const actionData = useActionData<CreateContactResult>();
+  const navigation = useNavigation();
+  const inputRef = React.useRef<HTMLInputElement>(null);
+
+  const state =
+    navigation.state === "submitting" || navigation.state === "loading"
+      ? "submitting"
+      : actionData?.success
+        ? "success"
+        : actionData?.success === false
+          ? "error"
+          : "idle";
+
+  React.useEffect(() => {
+    if (inputRef.current && state === "error") {
+      inputRef.current.focus();
+    }
+  }, [state]);
+
   return (
     <div>
       <img
@@ -48,16 +85,54 @@ export default function Index() {
           構建指南，幫助你高速開發應用，快速實現創意想法
         </p>
         <div className="mt-8 md:mt-20 md:flex md:justify-center">
-          <form className="flex flex-col gap-4 md:flex-row">
-            <input
-              type="email"
-              placeholder="tony@gmail.com"
-              className="form-input focus:ring-primary-200 focus:border-primary-500 min-h-[48px] w-full rounded-lg border border-gray-300 p-2 px-[14px] shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 md:w-[345px]"
-            />
-            <Button type="submit" className="flex-shrink-0" size="xl">
-              加入 waitlist
-            </Button>
-          </form>
+          {state === "success" ? (
+            <div className="flex min-h-[48px] space-x-2 ease-out animate-in fade-in-0 zoom-in">
+              <CheckCircle className="text-success-600 h-6 w-6 flex-shrink-0 " />
+              <span>成功加入 waitlist!</span>
+            </div>
+          ) : (
+            <Form
+              method="post"
+              replace
+              className="flex flex-col gap-4 md:flex-row"
+            >
+              <div className="relative">
+                <input
+                  ref={inputRef}
+                  type="email"
+                  name="email"
+                  aria-label="Email address"
+                  placeholder="tony@gmail.com"
+                  className={cn(
+                    "form-input focus:ring-primary-200 focus:border-primary-500 min-h-[48px] w-full rounded-lg border border-gray-300 p-2 px-[14px] shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 md:w-[345px]",
+                    {
+                      "ring-error-200 border-error-600 focus:ring-error-200 focus:border-error-600 peer":
+                        state === "error",
+                    },
+                  )}
+                />
+                {state === "error" && (
+                  <p className="text-error-600 absolute bottom-0 translate-y-[calc(100%_+_4px)] text-sm">
+                    {actionData?.message}
+                  </p>
+                )}
+              </div>
+              <Button
+                type="submit"
+                className="relative flex-shrink-0"
+                size="xl"
+              >
+                <span className={cn({ invisible: state === "submitting" })}>
+                  加入 waitlist
+                </span>
+                {state === "submitting" && (
+                  <div className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2">
+                    <Spinner className="h-5 w-5" />
+                  </div>
+                )}
+              </Button>
+            </Form>
+          )}
         </div>
       </section>
 
