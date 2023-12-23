@@ -22,7 +22,7 @@ function Header() {
   const [activeNavItem, setActiveNavItem] = React.useState<string>();
 
   return (
-    <header className="isolate z-50">
+    <header className="isolate relative z-50">
       <NavigationMenu.Root
         value={activeNavItem}
         onValueChange={(v) => setActiveNavItem(v)}
