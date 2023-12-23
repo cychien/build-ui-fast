@@ -13,7 +13,8 @@ import {
   Moon,
 } from "lucide-react";
 import * as React from "react";
-import { Logo } from "~/components/builduifast/assets/Logo";
+import logoWithNameSrc from "~/assets/logo-with-name.svg";
+import logoSrc from "~/assets/logo.svg";
 import { Button } from "~/components/site/Button";
 import { cn } from "~/utils/cn";
 
@@ -40,7 +41,7 @@ function Header() {
             <div className="flex space-x-10">
               <a href="#" className="flex items-center">
                 <span className="sr-only">Build UI Fast</span>
-                <Logo className="h-8" />
+                <img src={logoWithNameSrc} alt="logo" className="h-8" />
               </a>
               <NavigationMenu.List className="hidden h-full lg:flex lg:space-x-8">
                 <NavigationMenu.Item value="product" className="flex">
@@ -237,7 +238,7 @@ function Header() {
                       <div className="sticky top-0 z-20 flex items-center justify-between bg-white py-5 sm:block sm:self-end">
                         <a href="#" className="sm:hidden">
                           <span className="sr-only">Build UI Fast</span>
-                          <Logo className="h-8" />
+                          <img src={logoSrc} alt="logo" className="h-8" />
                         </a>
                         <Dialog.Close asChild>
                           <Button variant="ghost" iconButton>

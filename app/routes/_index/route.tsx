@@ -44,7 +44,7 @@ export default function Index() {
           以前所未有的速度打造 UI
         </h1>
         <p className="mt-6 text-lg text-gray-600 md:mx-auto md:mt-8 md:max-w-3xl md:text-center md:text-xl md:leading-[150%]">
-          一套全面、精心製作、且易於修改的 components 組合包 + 多份大型 UI
+          一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI
           構建指南，幫助你高速開發應用，快速實現創意想法
         </p>
         <div className="mt-8 md:mt-20 md:flex md:justify-center">
