@@ -22,7 +22,7 @@ function Header() {
   const [activeNavItem, setActiveNavItem] = React.useState<string>();
 
   return (
-    <header className="isolate relative z-50">
+    <header className="relative isolate z-20">
       <NavigationMenu.Root
         value={activeNavItem}
         onValueChange={(v) => setActiveNavItem(v)}
@@ -229,11 +229,11 @@ function Header() {
                   </Button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
-                  <Dialog.Overlay className="pointer-events-none fixed inset-0 bg-black opacity-50 data-[state=closed]:duration-200 data-[state=open]:duration-300 data-[state=closed]:ease-in-out data-[state=open]:ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
+                  <Dialog.Overlay className="pointer-events-none fixed inset-0 z-30 bg-black opacity-50 data-[state=closed]:duration-200 data-[state=open]:duration-300 data-[state=closed]:ease-in-out data-[state=open]:ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
                   <Dialog.Content asChild>
                     <NavigationMenu.Root
                       orientation="vertical"
-                      className="fixed inset-y-0 right-0 flex w-full max-w-xs flex-col overflow-auto overflow-x-hidden border-l border-gray-200 bg-white px-[15px] shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=open]:ease-slider-in sm:max-w-sm sm:px-6 lg:hidden"
+                      className="fixed inset-y-0 right-0 z-40 flex w-full max-w-xs flex-col overflow-auto overflow-x-hidden border-l border-gray-200 bg-white px-[15px] shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=open]:ease-slider-in sm:max-w-sm sm:px-6 lg:hidden"
                     >
                       <div className="sticky top-0 z-20 flex items-center justify-between bg-white py-5 sm:block sm:self-end">
                         <a href="#" className="sm:hidden">
