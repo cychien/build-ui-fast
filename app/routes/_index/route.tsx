@@ -24,8 +24,25 @@ export const action: ActionFunction = async ({ request }) => {
 
 export const meta: MetaFunction = () => {
   return [
-    { title: "New Remix App" },
-    { name: "description", content: "Welcome to Remix!" },
+    { title: "Build UI Fast" },
+    {
+      name: "description",
+      content:
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+    },
+    { property: "og:title", content: "Build UI Fast" },
+    {
+      property: "og:description",
+      content:
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+    },
+    { property: "og:image:alt", content: "Build UI Fast" },
+    { property: "twitter:title", content: "Build UI Fast" },
+    {
+      property: "twitter:description",
+      content:
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+    },
   ];
 };
 
@@ -68,8 +85,8 @@ export default function Index() {
         <div className="inline-block md:flex md:justify-center">
           <div className="-z-[5] flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 shadow lg:py-1">
             <span className="relative flex h-2 w-2">
-              <span className="bg-primary-400 absolute inline-flex h-full w-full animate-ping rounded-full opacity-75" />
-              <span className="bg-primary-600 relative inline-flex h-2 w-2 rounded-full" />
+              <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75" />
+              <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-600" />
             </span>
             <span className="ml-3 text-sm font-medium text-gray-600">
               加入 waitlist 取得最新發布消息
@@ -87,7 +104,7 @@ export default function Index() {
         <div className="mt-8 md:mt-20 md:flex md:justify-center">
           {state === "success" ? (
             <div className="flex min-h-[48px] space-x-2 ease-out animate-in fade-in-0 zoom-in">
-              <CheckCircle className="text-success-600 h-6 w-6 flex-shrink-0 " />
+              <CheckCircle className="h-6 w-6 flex-shrink-0 text-success-600 " />
               <span>成功加入 waitlist!</span>
             </div>
           ) : (
@@ -104,15 +121,15 @@ export default function Index() {
                   aria-label="Email address"
                   placeholder="tony@gmail.com"
                   className={cn(
-                    "form-input focus:ring-primary-200 focus:border-primary-500 min-h-[48px] w-full rounded-lg border border-gray-300 p-2 px-[14px] shadow-sm placeholder:text-gray-400 focus:outline-none focus:ring-2 md:w-[345px]",
+                    "form-input min-h-[48px] w-full rounded-lg border border-gray-300 p-2 px-[14px] shadow-sm placeholder:text-gray-400 focus:border-primary-500 focus:outline-none focus:ring-2 focus:ring-primary-200 md:w-[345px]",
                     {
-                      "ring-error-200 border-error-600 focus:ring-error-200 focus:border-error-600 peer":
+                      "peer border-error-600 ring-error-200 focus:border-error-600 focus:ring-error-200":
                         state === "error",
                     },
                   )}
                 />
                 {state === "error" && (
-                  <p className="text-error-600 absolute bottom-0 translate-y-[calc(100%_+_4px)] text-sm">
+                  <p className="absolute bottom-0 translate-y-[calc(100%_+_4px)] text-sm text-error-600">
                     {actionData?.message}
                   </p>
                 )}
@@ -137,7 +154,7 @@ export default function Index() {
       </section>
 
       <section className="container mx-auto py-24">
-        <div className="text-primary-700 font-semibold md:text-center">
+        <div className="font-semibold text-primary-700 md:text-center">
           特點
         </div>
         <h2 className="mt-3 text-2xl font-semibold text-gray-700 md:text-center">
@@ -145,7 +162,7 @@ export default function Index() {
         </h2>
         <div className="mt-12 flex flex-wrap gap-6">
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
-            <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
               <Blocks className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
@@ -159,7 +176,7 @@ export default function Index() {
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
-            <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
               <Layers className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
@@ -172,7 +189,7 @@ export default function Index() {
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
-            <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
               <Zap className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
@@ -184,7 +201,7 @@ export default function Index() {
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
-            <div className="bg-primary-600 flex h-12 w-12 items-center justify-center rounded-lg text-white">
+            <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-primary-600 text-white">
               <Globe className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
