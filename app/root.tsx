@@ -43,12 +43,12 @@ export default function App() {
         <meta name="creator" content="Justin Chien" />
         <meta
           property="og:url"
-          content={`https://builduifast.pages.dev${location.pathname}`}
+          content={`https://builduifast.fly.dev${location.pathname}`}
         />
         <meta property="og:site_name" content="Build UI Fast" />
         <meta
           property="og:image"
-          content="https://builduifast.pages.dev/og.png"
+          content="https://builduifast.fly.dev/ogn.jpg"
         />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
@@ -56,8 +56,12 @@ export default function App() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@justinchiency" />
         <meta
+          name="twitter:url"
+          content={`https://builduifast.fly.dev${location.pathname}`}
+        />
+        <meta
           name="twitter:image"
-          content="https://builduifast.pages.dev/og.png"
+          content="https://builduifast.fly.dev/ogn.jpg"
         />
         <Meta />
         <Links />
