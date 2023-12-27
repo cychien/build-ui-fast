@@ -41,16 +41,28 @@ export default function App() {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="author" content="Justin Chien" />
         <meta name="creator" content="Justin Chien" />
-        <meta property="og:url" content={`/${location.pathname}`} />
+        <meta
+          property="og:url"
+          content={`https://builduifast.fly.dev${location.pathname}`}
+        />
         <meta property="og:site_name" content="Build UI Fast" />
-        <meta property="og:image" content="/ogn.jpg" />
+        <meta
+          property="og:image"
+          content="https://builduifast.fly.dev/ogn.jpg"
+        />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:type" content="website" />
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:creator" content="@justinchiency" />
-        <meta name="twitter:url" content={`/${location.pathname}`} />
-        <meta name="twitter:image" content="/ogn.jpg" />
+        <meta
+          name="twitter:url"
+          content={`https://builduifast.fly.dev${location.pathname}`}
+        />
+        <meta
+          name="twitter:image"
+          content="https://builduifast.fly.dev/ogn.jpg"
+        />
         <Meta />
         <Links />
       </head>
