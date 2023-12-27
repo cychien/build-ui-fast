@@ -12,7 +12,9 @@ function Row() {
   return (
     <div className="py-8 first-of-type:pt-0 max-md:space-y-8 md:col-span-2 md:grid md:grid-cols-subgrid">
       <div>Annotation</div>
-      <div className="col-start-2 overflow-auto">Main Content</div>
+      <div className="col-start-2 h-12 overflow-auto bg-gray-100">
+        Main Content
+      </div>
     </div>
   );
 }

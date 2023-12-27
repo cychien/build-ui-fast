@@ -67,3 +67,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
   },
 );
 Button.displayName = "Button";
+
+function ButtonDemo() {
+  return <Button>Button</Button>;
+}
