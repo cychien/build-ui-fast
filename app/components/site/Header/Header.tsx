@@ -39,7 +39,7 @@ function Header() {
         >
           <div className="container mx-auto flex h-[80px]">
             <div className="flex space-x-10">
-              <a href="#" className="flex items-center">
+              <a href="/" className="flex items-center">
                 <span className="sr-only">Build UI Fast</span>
                 <img src={logoWithNameSrc} alt="logo" className="h-8" />
               </a>
