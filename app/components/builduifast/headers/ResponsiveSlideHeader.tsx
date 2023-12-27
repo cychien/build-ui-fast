@@ -1,10 +1,17 @@
-import { useIsMobile } from "../../utils";
+import { useIsMobile } from "../utils";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { Logo } from "~/components/builduifast/assets/Logo";
-import { Button } from "~/components/builduifast/buttons/ClassicButton";
+import { Button } from "~/components/builduifast/buttons/Button";
+
+const navItems = [
+  { name: "產品", url: "#" },
+  { name: "資源", url: "#" },
+  { name: "案例分享", url: "#" },
+  { name: "FAQ", url: "#" },
+];
 
 function Header() {
   const [isMenuPoppedOut, setIsMenuPoppedOut] = React.useState(false);
@@ -17,31 +24,18 @@ function Header() {
         <div className="relative z-10 bg-white">
           <div className="container mx-auto flex items-center py-5">
             <div className="flex items-center space-x-10">
-              <a href="#">
+              <a href="/">
                 <span className="sr-only">Eureka</span>
                 <Logo className="h-8" />
               </a>
               <NavigationMenu.List className="hidden lg:flex lg:space-x-8">
-                <NavigationMenu.Item>
-                  <a href="#" className="font-medium text-gray-700">
-                    產品
-                  </a>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item>
-                  <a href="#" className="font-medium text-gray-700">
-                    資源
-                  </a>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item>
-                  <a href="#" className="font-medium text-gray-700">
-                    案例分享
-                  </a>
-                </NavigationMenu.Item>
-                <NavigationMenu.Item>
-                  <a href="#" className="font-medium text-gray-700">
-                    FAQ
-                  </a>
-                </NavigationMenu.Item>
+                {navItems.map((item) => (
+                  <NavigationMenu.Item key={item.name}>
+                    <a href={item.url} className="font-medium text-gray-700">
+                      {item.name}
+                    </a>
+                  </NavigationMenu.Item>
+                ))}
               </NavigationMenu.List>
             </div>
 
@@ -86,14 +80,14 @@ function Header() {
                 <Dialog.Portal
                   container={isMobile ? headerRef.current : undefined}
                 >
-                  <Dialog.Overlay className="sm:bg-black sm:data-[state=open]:animate-in sm:data-[state=open]:fade-in-0 sm:data-[state=closed]:animate-out sm:data-[state=closed]:fade-out-0 sm:pointer-events-none sm:fixed sm:inset-0 sm:opacity-50 sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-300 sm:data-[state=closed]:ease-in-out sm:data-[state=open]:ease-out" />
+                  <Dialog.Overlay className="sm:pointer-events-none sm:fixed sm:inset-0 sm:bg-black sm:opacity-50 sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-300 sm:data-[state=closed]:ease-in-out sm:data-[state=open]:ease-out sm:data-[state=open]:animate-in sm:data-[state=closed]:animate-out sm:data-[state=closed]:fade-out-0 sm:data-[state=open]:fade-in-0" />
                   <Dialog.Content asChild>
                     <NavigationMenu.Root
                       orientation="vertical"
-                      className="data-[state=open]:ease-slider-in data-[state=open]:animate-in data-[state=closed]:animate-out max-sm:data-[state=closed]:slide-out-to-top max-sm:data-[state=open]:slide-in-from-top-4 max-sm:data-[state=closed]:fade-out-0 sm:data-[state=open]:slide-in-from-right sm:data-[state=closed]:slide-out-to-right absolute right-0 flex w-full flex-col border-l border-gray-200 bg-white px-[15px] pb-5 pt-2 shadow outline-none max-sm:data-[state=closed]:duration-150 max-sm:data-[state=open]:duration-300 max-sm:data-[state=closed]:ease-in sm:fixed sm:inset-y-0 sm:max-w-sm sm:px-6 sm:py-5 sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-500 sm:data-[state=closed]:ease-in-out lg:hidden"
+                      className="absolute right-0 flex w-full flex-col border-l border-gray-200 bg-white px-[15px] pb-5 pt-2 shadow outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:ease-slider-in max-sm:data-[state=closed]:duration-150 max-sm:data-[state=open]:duration-300 max-sm:data-[state=closed]:ease-in max-sm:data-[state=closed]:fade-out-0 max-sm:data-[state=closed]:slide-out-to-top max-sm:data-[state=open]:slide-in-from-top-4 sm:fixed sm:inset-y-0 sm:max-w-sm sm:px-6 sm:py-5 sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-500 sm:data-[state=closed]:ease-in-out sm:data-[state=closed]:slide-out-to-right sm:data-[state=open]:slide-in-from-right lg:hidden"
                     >
                       <div className="hidden sm:block sm:self-end">
-                        <a href="#" className="sm:hidden">
+                        <a href="/" className="sm:hidden">
                           <span className="sr-only">Eureka</span>
                           <Logo className="h-8" />
                         </a>
@@ -110,38 +104,16 @@ function Header() {
                       </div>
                       <div className="divide-y divide-gray-100">
                         <NavigationMenu.List className="space-y-2 pb-6 sm:py-6">
-                          <NavigationMenu.Item>
-                            <a
-                              href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-                            >
-                              產品
-                            </a>
-                          </NavigationMenu.Item>
-                          <NavigationMenu.Item>
-                            <a
-                              href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-                            >
-                              資源
-                            </a>
-                          </NavigationMenu.Item>
-                          <NavigationMenu.Item>
-                            <a
-                              href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-                            >
-                              案例分享
-                            </a>
-                          </NavigationMenu.Item>
-                          <NavigationMenu.Item>
-                            <a
-                              href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
-                            >
-                              FAQ
-                            </a>
-                          </NavigationMenu.Item>
+                          {navItems.map((item) => (
+                            <NavigationMenu.Item key={item.name}>
+                              <a
+                                href={item.url}
+                                className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                              >
+                                {item.name}
+                              </a>
+                            </NavigationMenu.Item>
+                          ))}
                         </NavigationMenu.List>
                         <div className="pt-6 sm:py-6">
                           <a
@@ -163,5 +135,3 @@ function Header() {
     </header>
   );
 }
-
-export { Header };

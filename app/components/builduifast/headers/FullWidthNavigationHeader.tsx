@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "~/components/builduifast/assets/Logo";
-import { Button } from "~/components/builduifast/buttons/ClassicButton";
+import { Button } from "~/components/builduifast/buttons/Button";
 
 function Header() {
   return (
@@ -12,7 +12,7 @@ function Header() {
         <div className="relative z-10 bg-white">
           <div className="container mx-auto flex h-[80px]">
             <div className="flex space-x-10">
-              <a href="#" className="flex items-center">
+              <a href="/" className="flex items-center">
                 <span className="sr-only">Eureka</span>
                 <Logo className="h-8" />
               </a>
@@ -22,7 +22,7 @@ function Header() {
                     <span>產品</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
-                  <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out container mx-auto py-8">
+                  <NavigationMenu.Content className="container mx-auto py-8 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
                     Something cool
                   </NavigationMenu.Content>
                 </NavigationMenu.Item>
@@ -31,7 +31,7 @@ function Header() {
                     <span>資源</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
-                  <NavigationMenu.Content className="data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out container mx-auto py-8">
+                  <NavigationMenu.Content className="container mx-auto py-8 data-[motion^=from-]:animate-in data-[motion^=to-]:animate-out data-[motion^=from-]:fade-in data-[motion^=to-]:fade-out">
                     Something awesome
                   </NavigationMenu.Content>
                 </NavigationMenu.Item>
@@ -65,14 +65,14 @@ function Header() {
                   </Button>
                 </Dialog.Trigger>
                 <Dialog.Portal>
-                  <Dialog.Overlay className="bg-black data-[state=open]:animate-in data-[state=open]:fade-in-0 data-[state=closed]:animate-out data-[state=closed]:fade-out-0 pointer-events-none fixed inset-0 opacity-50 data-[state=closed]:duration-200 data-[state=open]:duration-300 data-[state=closed]:ease-in-out data-[state=open]:ease-out" />
+                  <Dialog.Overlay className="pointer-events-none fixed inset-0 bg-black opacity-50 data-[state=closed]:duration-200 data-[state=open]:duration-300 data-[state=closed]:ease-in-out data-[state=open]:ease-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=open]:fade-in-0" />
                   <Dialog.Content asChild>
                     <NavigationMenu.Root
                       orientation="vertical"
-                      className="data-[state=open]:ease-slider-in data-[state=open]:animate-in data-[state=open]:slide-in-from-right data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right fixed inset-y-0 right-0 flex w-full max-w-xs flex-col border-l border-gray-200 bg-white px-[15px] py-5 shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out sm:max-w-sm sm:px-6 lg:hidden"
+                      className="fixed inset-y-0 right-0 flex w-full max-w-xs flex-col border-l border-gray-200 bg-white px-[15px] py-5 shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=open]:ease-slider-in sm:max-w-sm sm:px-6 lg:hidden"
                     >
                       <div className="flex items-center justify-between sm:block sm:self-end">
-                        <a href="#" className="sm:hidden">
+                        <a href="/" className="sm:hidden">
                           <span className="sr-only">Eureka</span>
                           <Logo className="h-8" />
                         </a>
@@ -92,7 +92,7 @@ function Header() {
                                   <span>產品</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
-                                <Accordion.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden">
+                                <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                                   <div className="px-3 py-4">
                                     Something cool
                                   </div>
@@ -107,7 +107,7 @@ function Header() {
                                   <span>資源</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
-                                <Accordion.Content className="data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down overflow-hidden">
+                                <Accordion.Content className="overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                                   <div className="px-3 py-4">
                                     Something awesome
                                   </div>
@@ -150,11 +150,9 @@ function Header() {
         </div>
 
         <div className="hidden lg:absolute lg:left-0 lg:block lg:w-full">
-          <NavigationMenu.Viewport className="data-[state=open]:ease-slider-in data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top-4 data-[state=closed]:fade-out-0 h-[--radix-navigation-menu-viewport-height] overflow-hidden shadow data-[state=closed]:duration-100 data-[state=open]:duration-300 data-[state=closed]:ease-in" />
+          <NavigationMenu.Viewport className="h-[--radix-navigation-menu-viewport-height] overflow-hidden bg-white shadow data-[state=closed]:duration-100 data-[state=open]:duration-300 data-[state=closed]:ease-in data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:fade-out-0 data-[state=closed]:slide-out-to-top data-[state=open]:slide-in-from-top-4 data-[state=open]:ease-slider-in" />
         </div>
       </NavigationMenu.Root>
     </header>
   );
 }
-
-export { Header };
