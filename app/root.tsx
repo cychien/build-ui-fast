@@ -64,7 +64,7 @@ export default function App() {
         <Links />
       </head>
       <body>
-        <Header />
+        {!location.pathname.includes("demo") && <Header />}
         <Outlet />
         <ScrollRestoration />
         <Scripts />

@@ -71,3 +71,5 @@ Button.displayName = "Button";
 function ButtonDemo() {
   return <Button>Button</Button>;
 }
+
+export default Button;
