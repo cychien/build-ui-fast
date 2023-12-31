@@ -2,7 +2,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu, X } from "lucide-react";
 import { Logo } from "~/components/builduifast/assets/Logo";
-import Button from "~/components/builduifast/buttons/Button";
+import Button from "~/components/builduifast/button/Button";
 
 const navItems = [
   { name: "產品", url: "#" },

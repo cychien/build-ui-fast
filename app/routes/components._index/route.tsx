@@ -1,19 +1,22 @@
+import { Link } from "@remix-run/react";
+
 export default function ComponentsPage() {
   return (
     <div className="container mx-auto">
       <h1 className="py-6 text-3xl font-semibold md:py-12">Components</h1>
 
-      <div className="divide-y divide-gray-100 md:grid md:grid-cols-[220px_1fr] md:gap-x-16 lg:grid-cols-[260px_1fr] xl:grid-cols-[300px_1fr]">
+      <div className="divide-y divide-gray-200 md:grid md:grid-cols-[220px_1fr] md:gap-x-16 lg:grid-cols-[260px_1fr] xl:grid-cols-[300px_1fr]">
         <Row
           name="佈局用 components"
           description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
         >
-          {/* <ComponentsGrid>
+          <ComponentsGrid>
             <ComponentCard
               name="Header"
+              componentId="header"
               imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
-          </ComponentsGrid> */}
+          </ComponentsGrid>
         </Row>
         <Row
           name="基礎 components"
@@ -22,6 +25,7 @@ export default function ComponentsPage() {
           <ComponentsGrid>
             <ComponentCard
               name="Announcement"
+              componentId="announcement"
               imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
             />
           </ComponentsGrid>
@@ -71,16 +75,20 @@ function ComponentsGrid({ children }: ComponentsGridProps) {
 
 type ComponentCardProps = {
   name: string;
+  componentId: string;
   imageUrl: string;
 };
 
-function ComponentCard({ name, imageUrl }: ComponentCardProps) {
+function ComponentCard({ name, componentId, imageUrl }: ComponentCardProps) {
   return (
-    <div>
-      <div className="relative aspect-video w-full overflow-hidden rounded-lg bg-gray-100">
+    <Link
+      to={`/components/${componentId}`}
+      className="rounded-xl p-2 pb-3 hover:bg-gray-50"
+    >
+      <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
         <img src={imageUrl} alt="" />
       </div>
       <div className="mt-1 text-sm font-medium md:mt-2">{name}</div>
-    </div>
+    </Link>
   );
 }
