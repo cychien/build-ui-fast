@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu, X, ChevronDown } from "lucide-react";
 import { Logo } from "~/components/builduifast/assets/Logo";
-import Button from "~/components/builduifast/button/Button";
+import { Button } from "~/components/builduifast/button/ClassicButton";
 
 function Header() {
   return (

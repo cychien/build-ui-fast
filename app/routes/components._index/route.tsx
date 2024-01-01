@@ -16,6 +16,16 @@ export default function ComponentsPage() {
               componentId="header"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
+            <ComponentCard
+              name="Grid"
+              componentId="grid"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
+            <ComponentCard
+              name="多欄位排版"
+              componentId="multi-columns-layout"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
           </ComponentsGrid>
         </Row>
         <Row
@@ -27,6 +37,16 @@ export default function ComponentsPage() {
               name="Announcement"
               componentId="announcement"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+            />
+            <ComponentCard
+              name="Button"
+              componentId="button"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
+            <ComponentCard
+              name="可伸縮元素"
+              componentId="resizable"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
           </ComponentsGrid>
         </Row>
@@ -56,7 +76,7 @@ function Row({ name, description, children }: RowProps) {
         <h2 className="text-lg font-semibold">{name}</h2>
         <p className="mt-3 text-sm text-gray-600">{description}</p>
       </div>
-      <div className="col-start-2 overflow-auto">{children}</div>
+      <div className="col-start-2">{children}</div>
     </div>
   );
 }
@@ -83,7 +103,7 @@ function ComponentCard({ name, componentId, imageUrl }: ComponentCardProps) {
   return (
     <Link
       to={`/components/${componentId}`}
-      className="rounded-xl p-2 pb-3 hover:bg-gray-50"
+      className="relative before:absolute before:-inset-2 before:-bottom-3 before:-z-10 before:rounded-xl before:hover:bg-gray-50"
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
         {imageUrl && <img src={imageUrl} alt="" />}

@@ -10,9 +10,9 @@ const buttonVariant = cva(
       variant: {
         default: "bg-gray-900 shadow hover:enabled:bg-gray-900/80",
         outline:
-          "text-gray-700 shadow-sm hover:enabled:bg-gray-200 hover:enabled:text-gray-900",
+          "text-gray-700 shadow-sm border border-gray-300 hover:enabled:bg-gray-100 hover:enabled:text-gray-900",
         secondary:
-          "bg-gray-100 text-gray-500 shadow-sm hover:enabled:bg-gray-100/80",
+          "bg-gray-100 text-gray-900 shadow-sm hover:enabled:bg-gray-100/80",
         ghost:
           "text-gray-700 hover:enabled:bg-gray-100 hover:enabled:text-gray-900",
         link: "text-gray-700 underline-offset-4 hover:enabled:underline hover:enabled:text-gray-900",
@@ -68,8 +68,17 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
 );
 Button.displayName = "Button";
 
-function ButtonDemo() {
-  return <Button>Button</Button>;
+function Demo() {
+  return (
+    <div className="flex h-full flex-wrap items-center justify-center space-x-4 p-6">
+      <Button>Button</Button>
+      <Button variant="outline">Button</Button>
+      <Button variant="secondary">Button</Button>
+      <Button variant="ghost">Button</Button>
+      <Button variant="link">Button</Button>
+    </div>
+  );
 }
 
-export default Button;
+export default Demo;
+export { Button };

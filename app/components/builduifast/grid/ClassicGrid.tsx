@@ -3,11 +3,7 @@ type GridProps = {
 };
 
 function Grid({ children }: GridProps) {
-  return (
-    <div className="grid grid-cols-[repeat(auto-fill,_minmax(min(150px,_100%),_1fr))] gap-3">
-      {children}
-    </div>
-  );
+  return <div className="flex flex-wrap gap-3">{children}</div>;
 }
 
 type DemoGridChildProps = {
@@ -16,7 +12,7 @@ type DemoGridChildProps = {
 
 function DemoGridChild({ children }: DemoGridChildProps) {
   return (
-    <div className="flex h-20 items-center justify-center rounded border-[3px] border-dashed border-gray-300 bg-gray-100">
+    <div className="flex h-20 min-w-[150px] flex-1 items-center justify-center rounded border-[3px] border-dashed border-gray-300 bg-gray-100">
       {children}
     </div>
   );

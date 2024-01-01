@@ -11,7 +11,7 @@ type ComponentDemoProps = {
 function ComponentDemo({
   componentId,
   variantId,
-  height = 160,
+  height = 250,
 }: ComponentDemoProps) {
   const [isDragging, setIsDragging] = React.useState(false);
   const maxWidth = React.useRef<number>();
