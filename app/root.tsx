@@ -9,7 +9,7 @@ import {
   ScrollRestoration,
   useLocation,
 } from "@remix-run/react";
-import { Header } from "~/components/site/Header";
+import Header from "~/components/builduifast/header/SlideDownHeader";
 
 export const links: LinksFunction = () => [
   {

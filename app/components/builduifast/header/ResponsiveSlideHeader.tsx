@@ -84,9 +84,9 @@ function Header() {
                   <Dialog.Content asChild>
                     <NavigationMenu.Root
                       orientation="vertical"
-                      className="absolute right-0 flex w-full flex-col border-l border-gray-200 bg-white px-[15px] pb-5 pt-2 shadow outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:ease-slider-in max-sm:data-[state=closed]:duration-150 max-sm:data-[state=open]:duration-300 max-sm:data-[state=closed]:ease-in max-sm:data-[state=closed]:fade-out-0 max-sm:data-[state=closed]:slide-out-to-top max-sm:data-[state=open]:slide-in-from-top-4 sm:fixed sm:inset-y-0 sm:max-w-sm sm:px-6 sm:py-5 sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-500 sm:data-[state=closed]:ease-in-out sm:data-[state=closed]:slide-out-to-right sm:data-[state=open]:slide-in-from-right lg:hidden"
+                      className="absolute right-0 flex w-full flex-col overflow-auto border-l border-gray-200 bg-white shadow outline-none data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=open]:ease-slider-in max-sm:data-[state=closed]:duration-100 max-sm:data-[state=open]:duration-200 max-sm:data-[state=closed]:ease-in max-sm:data-[state=closed]:fade-in-0 max-sm:data-[state=closed]:fade-out-0 max-sm:data-[state=closed]:slide-out-to-top-2 max-sm:data-[state=open]:slide-in-from-top-2 sm:fixed sm:inset-y-0 sm:max-w-sm sm:data-[state=closed]:duration-200 sm:data-[state=open]:duration-500 sm:data-[state=closed]:ease-in-out sm:data-[state=closed]:slide-out-to-right sm:data-[state=open]:slide-in-from-right lg:hidden"
                     >
-                      <div className="hidden sm:block sm:self-end">
+                      <div className="sticky top-0 z-10 hidden items-center justify-between bg-white px-[15px] py-5 sm:flex sm:px-6">
                         <a href="/" className="sm:hidden">
                           <span className="sr-only">Eureka</span>
                           <Logo className="h-8" />
@@ -94,6 +94,7 @@ function Header() {
                         <Button
                           variant="ghost"
                           iconButton
+                          className="ml-auto"
                           onClick={() => {
                             setIsMenuPoppedOut(false);
                           }}
@@ -102,13 +103,13 @@ function Header() {
                           <X />
                         </Button>
                       </div>
-                      <div className="divide-y divide-gray-100">
-                        <NavigationMenu.List className="space-y-2 pb-6 sm:py-6">
+                      <div className="divide-y divide-gray-100 px-[15px] pb-5 sm:px-6">
+                        <NavigationMenu.List className="space-y-2 pb-6 pt-2 sm:pt-1">
                           {navItems.map((item) => (
                             <NavigationMenu.Item key={item.name}>
                               <a
                                 href={item.url}
-                                className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                                className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-50"
                               >
                                 {item.name}
                               </a>
@@ -118,7 +119,7 @@ function Header() {
                         <div className="pt-6 sm:py-6">
                           <a
                             href="#"
-                            className="-mx-3 block rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                            className="-mx-3 block rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-50"
                           >
                             登入
                           </a>

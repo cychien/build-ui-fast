@@ -69,26 +69,30 @@ function Header() {
                   <Dialog.Content asChild>
                     <NavigationMenu.Root
                       orientation="vertical"
-                      className="fixed inset-y-0 right-0 flex w-full max-w-xs flex-col border-l border-gray-200 bg-white px-[15px] py-5 shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=open]:ease-slider-in sm:max-w-sm sm:px-6 lg:hidden"
+                      className="fixed inset-y-0 right-0 flex w-full max-w-xs flex-col overflow-auto border-l border-gray-200 bg-white shadow outline-none data-[state=closed]:duration-200 data-[state=open]:duration-500 data-[state=closed]:ease-in-out data-[state=open]:animate-in data-[state=closed]:animate-out data-[state=closed]:slide-out-to-right data-[state=open]:slide-in-from-right data-[state=open]:ease-slider-in sm:max-w-sm lg:hidden"
                     >
-                      <div className="flex items-center justify-between sm:block sm:self-end">
+                      <div className="sticky top-0 z-20 flex items-center justify-between bg-white px-[15px] py-5 sm:px-6">
                         <a href="/" className="sm:hidden">
                           <span className="sr-only">Eureka</span>
                           <Logo className="h-8" />
                         </a>
                         <Dialog.Close asChild>
-                          <Button variant="ghost" iconButton>
+                          <Button
+                            variant="ghost"
+                            iconButton
+                            className="ml-auto"
+                          >
                             <span className="sr-only">關閉主選單</span>
                             <X />
                           </Button>
                         </Dialog.Close>
                       </div>
-                      <div className="divide-y divide-gray-100">
-                        <NavigationMenu.List className="space-y-2 py-6">
+                      <div className="divide-y divide-gray-100 px-[15px] pb-5 sm:px-6">
+                        <NavigationMenu.List className="space-y-2 pb-6 pt-1">
                           <NavigationMenu.Item className="-mx-3 block space-y-2">
                             <Accordion.Root type="single" collapsible>
                               <Accordion.Item value="item-1">
-                                <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50">
+                                <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 hover:bg-gray-50">
                                   <span>產品</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
@@ -103,7 +107,7 @@ function Header() {
                           <NavigationMenu.Item className="-mx-3 block space-y-2">
                             <Accordion.Root type="single" collapsible>
                               <Accordion.Item value="item-1">
-                                <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50">
+                                <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 hover:bg-gray-50">
                                   <span>資源</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
@@ -118,7 +122,7 @@ function Header() {
                           <NavigationMenu.Item>
                             <a
                               href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-50"
                             >
                               案例分享
                             </a>
@@ -126,7 +130,7 @@ function Header() {
                           <NavigationMenu.Item>
                             <a
                               href="#"
-                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-50"
                             >
                               FAQ
                             </a>
@@ -135,7 +139,7 @@ function Header() {
                         <div className="py-6">
                           <a
                             href="#"
-                            className="-mx-3 block rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                            className="-mx-3 block rounded-lg px-3 py-2 font-medium text-gray-700 hover:bg-gray-50"
                           >
                             登入
                           </a>

@@ -50,6 +50,8 @@ export default {
       },
       animationTimingFunction: {
         "slider-in": "cubic-bezier(0.19, 1, 0.22, 1)",
+        "test-in": "cubic-bezier(0, 0, 0.2, 1)",
+        "test-out": "cubic-bezier(0.4, 0, 1, 1)",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

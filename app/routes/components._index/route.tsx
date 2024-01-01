@@ -14,7 +14,7 @@ export default function ComponentsPage() {
             <ComponentCard
               name="Header"
               componentId="header"
-              imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
           </ComponentsGrid>
         </Row>
@@ -26,7 +26,7 @@ export default function ComponentsPage() {
             <ComponentCard
               name="Announcement"
               componentId="announcement"
-              imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
             />
           </ComponentsGrid>
         </Row>
@@ -52,7 +52,7 @@ type RowProps = {
 function Row({ name, description, children }: RowProps) {
   return (
     <div className="py-12 first-of-type:pt-6 max-md:space-y-8 md:col-span-2 md:grid md:grid-cols-subgrid xl:first-of-type:pt-12">
-      <div>
+      <div className="relative top-1">
         <h2 className="text-lg font-semibold">{name}</h2>
         <p className="mt-3 text-sm text-gray-600">{description}</p>
       </div>
@@ -76,7 +76,7 @@ function ComponentsGrid({ children }: ComponentsGridProps) {
 type ComponentCardProps = {
   name: string;
   componentId: string;
-  imageUrl: string;
+  imageUrl?: string;
 };
 
 function ComponentCard({ name, componentId, imageUrl }: ComponentCardProps) {
@@ -86,7 +86,7 @@ function ComponentCard({ name, componentId, imageUrl }: ComponentCardProps) {
       className="rounded-xl p-2 pb-3 hover:bg-gray-50"
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
-        <img src={imageUrl} alt="" />
+        {imageUrl && <img src={imageUrl} alt="" />}
       </div>
       <div className="mt-1 text-sm font-medium md:mt-2">{name}</div>
     </Link>

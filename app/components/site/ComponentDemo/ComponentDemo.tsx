@@ -15,7 +15,7 @@ function ComponentDemo({
 }: ComponentDemoProps) {
   const [isDragging, setIsDragging] = React.useState(false);
   const maxWidth = React.useRef<number>();
-  const minWidth = 300;
+  const minWidth = 350;
   const [width, setWidth] = React.useState<number>();
   const [ref, bounds] = useMeasure();
   const startX = React.useRef<number>();
@@ -74,6 +74,10 @@ function ComponentDemo({
         }}
         onDragEnd={() => {
           setIsDragging(false);
+        }}
+        onDragOver={(e) => {
+          e.preventDefault();
+          e.dataTransfer.dropEffect = "move";
         }}
         draggable
       >
