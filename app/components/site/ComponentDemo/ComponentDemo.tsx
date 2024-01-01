@@ -5,13 +5,13 @@ import { cn } from "~/utils/cn";
 type ComponentDemoProps = {
   componentId: string;
   variantId: string;
-  className?: string;
+  height?: number;
 };
 
 function ComponentDemo({
   componentId,
   variantId,
-  className,
+  height = 160,
 }: ComponentDemoProps) {
   const [isDragging, setIsDragging] = React.useState(false);
   const maxWidth = React.useRef<number>();
@@ -38,18 +38,20 @@ function ComponentDemo({
   }, []);
 
   return (
-    <div ref={ref} className="relative inline-block w-full" style={{ width }}>
+    <div
+      ref={ref}
+      className="relative inline-block w-full"
+      style={{ width, height }}
+    >
       <iframe
         src={`/components/demo/${componentId}/${variantId}`}
-        className={cn(
-          "w-full rounded-md border border-gray-200",
-          { "pointer-events-none": isDragging },
-          className,
-        )}
+        className={cn("h-full w-full rounded-md border border-gray-200", {
+          "pointer-events-none": isDragging,
+        })}
         style={{ width }}
       />
       <div
-        className="absolute inset-y-0 left-full hidden cursor-ew-resize items-center px-2 sm:flex"
+        className="group absolute inset-y-0 left-full hidden cursor-ew-resize items-center px-2 sm:flex"
         onDragStart={(e) => {
           setIsDragging(true);
           // @ts-ignore
@@ -75,7 +77,12 @@ function ComponentDemo({
         }}
         draggable
       >
-        <div className="h-8 w-1.5 rounded-full bg-gray-400" />
+        <div
+          className={cn(
+            "h-8 w-1.5 rounded-full bg-gray-400 group-hover:bg-gray-500",
+            { "bg-gray-500": isDragging },
+          )}
+        />
       </div>
     </div>
   );

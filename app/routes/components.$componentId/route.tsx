@@ -39,8 +39,8 @@ export default function Route() {
         </h1>
       </div>
 
-      <div className="grid grid-cols-1 gap-16 py-8 lg:grid-cols-[210px,_1fr]">
-        <ul className="hidden space-y-1 lg:block">
+      <div className="grid grid-cols-1 items-start gap-16 py-8 lg:grid-cols-[210px,_1fr]">
+        <ul className="sticky top-8 hidden space-y-1 lg:block">
           {docToc.map((h2, index) => (
             <li
               key={index}
@@ -58,9 +58,9 @@ export default function Route() {
           ))}
         </ul>
 
-        <div>
+        <main className="prose max-w-none prose-h2:mb-3 prose-h2:text-base prose-h2:font-medium">
           <DocComponent />
-        </div>
+        </main>
       </div>
     </div>
   );

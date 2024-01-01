@@ -66,7 +66,7 @@ export default function App() {
       <body>
         {!location.pathname.includes("demo") && <Header />}
         <Outlet />
-        <ScrollRestoration />
+        {!location.pathname.includes("demo") && <ScrollRestoration />}
         <Scripts />
         <LiveReload />
       </body>
