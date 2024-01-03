@@ -4,4 +4,5 @@ export const componentNames: Record<string, string> = {
   button: "Button",
   "multi-columns-layout": "多欄位排版",
   resizable: "可伸縮元素",
+  background: "背景",
 };
