@@ -1,4 +1,4 @@
-function Background() {
+function Gradient() {
   return (
     <div
       className="h-full w-full"
@@ -11,4 +11,4 @@ function Background() {
   );
 }
 
-export default Background;
+export default Gradient;

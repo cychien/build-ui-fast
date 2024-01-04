@@ -39,7 +39,7 @@ const themes = {
   },
 };
 
-function Background() {
+function Gradient() {
   const [theme, setTheme] = React.useState("candy");
 
   return (
@@ -81,4 +81,4 @@ function Background() {
   );
 }
 
-export default Background;
+export default Gradient;
