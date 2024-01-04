@@ -14,14 +14,14 @@ export default {
       },
     },
     colors: {
-      transparent: colors.transparent,
-      black: colors.black,
-      white: colors.white,
-      slate: colors.slate,
-      gray: colors.gray,
-      error: colors.red,
-      success: colors.green,
+      border: "hsl(var(--border))",
+      input: "hsl(var(--input))",
+      ring: "hsl(var(--ring))",
+      background: "hsl(var(--background))",
+      foreground: "hsl(var(--foreground))",
       primary: {
+        DEFAULT: "hsl(var(--primary))",
+        foreground: "hsl(var(--primary-foreground))",
         50: "#eff8ff",
         100: "#d1e9ff",
         200: "#b2ddff",
@@ -33,6 +33,37 @@ export default {
         800: "#1849a9",
         900: "#194185",
       },
+      secondary: {
+        DEFAULT: "hsl(var(--secondary))",
+        foreground: "hsl(var(--secondary-foreground))",
+      },
+      destructive: {
+        DEFAULT: "hsl(var(--destructive))",
+        foreground: "hsl(var(--destructive-foreground))",
+      },
+      muted: {
+        DEFAULT: "hsl(var(--muted))",
+        foreground: "hsl(var(--muted-foreground))",
+      },
+      accent: {
+        DEFAULT: "hsl(var(--accent))",
+        foreground: "hsl(var(--accent-foreground))",
+      },
+      popover: {
+        DEFAULT: "hsl(var(--popover))",
+        foreground: "hsl(var(--popover-foreground))",
+      },
+      card: {
+        DEFAULT: "hsl(var(--card))",
+        foreground: "hsl(var(--card-foreground))",
+      },
+      transparent: colors.transparent,
+      black: colors.black,
+      white: colors.white,
+      slate: colors.slate,
+      gray: colors.gray,
+      error: colors.red,
+      success: colors.green,
     },
     extend: {
       fontFamily: {
@@ -50,8 +81,6 @@ export default {
       },
       animationTimingFunction: {
         "slider-in": "cubic-bezier(0.19, 1, 0.22, 1)",
-        "test-in": "cubic-bezier(0, 0, 0.2, 1)",
-        "test-out": "cubic-bezier(0.4, 0, 1, 1)",
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",

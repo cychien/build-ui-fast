@@ -4,7 +4,7 @@ import * as NavigationMenu from "@radix-ui/react-navigation-menu";
 import { Menu, X } from "lucide-react";
 import * as React from "react";
 import { Logo } from "~/components/builduifast/assets/Logo";
-import { Button } from "~/components/builduifast/button/ClassicButton";
+import { Button } from "~/components/builduifast/button/ShadcnButton";
 
 const navItems = [
   { name: "產品", url: "#" },
