@@ -26,11 +26,6 @@ export default function ComponentsPage() {
               componentId="multi-columns-layout"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
-            <ComponentCard
-              name="背景"
-              componentId="background"
-              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
-            />
           </ComponentsGrid>
         </Row>
         <Row
@@ -62,7 +57,15 @@ export default function ComponentsPage() {
         <Row
           name="各式效果"
           description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
-        ></Row>
+        >
+          <ComponentsGrid>
+            <ComponentCard
+              name="漸層"
+              componentId="gradient"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
+          </ComponentsGrid>
+        </Row>
       </div>
     </div>
   );
