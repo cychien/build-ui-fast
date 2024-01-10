@@ -1,6 +1,19 @@
 import * as React from "react";
 import useMeasure from "react-use-measure";
+import {
+  Tabs,
+  TabsContent,
+  TabsList,
+  TabsTrigger,
+} from "~/components/builduifast/tabs/Tabs";
 import { cn } from "~/utils/cn";
+import { Highlighter, getHighlighter } from "~/utils/highlighter";
+
+type ComponentType = {
+  variantName: string;
+  templateCode: string;
+  componentCode: string;
+};
 
 type ComponentDemoProps = {
   componentId: string;
@@ -13,6 +26,7 @@ function ComponentDemo({
   variantId,
   height = 250,
 }: ComponentDemoProps) {
+  const [highlighter, setHighlighter] = React.useState<Highlighter>();
   const [isDragging, setIsDragging] = React.useState(false);
   const maxWidth = React.useRef<number>();
   const minWidth = 350;
@@ -22,6 +36,33 @@ function ComponentDemo({
   const offsetX = React.useRef<number>();
   const lastXDuringDrag = React.useRef<number>();
   const shadowImage = React.useRef<HTMLImageElement>();
+
+  // TODO: maybe put import.meta.glob in server side
+  const component = React.useMemo(() => {
+    return import.meta.glob(`../../builduifast/**/*.tsx`, {
+      eager: true,
+    })[`../../builduifast/${componentId}/${variantId}.tsx`];
+  }, [componentId, variantId]) as ComponentType;
+
+  // TODO: should return 404
+  if (!component) return null;
+
+  const templateCode = component.templateCode;
+  const componentCode = component.componentCode;
+  const componentCodeHtml = React.useMemo(
+    () =>
+      highlighter?.codeToHtml(componentCode, {
+        lang: "tsx",
+        theme: "material-theme",
+      }) ?? "",
+    [highlighter, componentCode],
+  );
+
+  React.useEffect(() => {
+    getHighlighter().then((highlighter) => {
+      setHighlighter(highlighter);
+    });
+  }, []);
 
   React.useEffect(() => {
     if (!width && bounds.width !== 0) {
@@ -38,57 +79,72 @@ function ComponentDemo({
   }, []);
 
   return (
-    <div
-      ref={ref}
-      className="relative inline-block w-full"
-      style={{ width, height }}
-    >
-      <iframe
-        src={`/components/demo/${componentId}/${variantId}`}
-        className={cn("h-full w-full rounded-md border border-gray-200", {
-          "pointer-events-none": isDragging,
-        })}
-        style={{ width }}
-      />
-      <div
-        className="group absolute inset-y-0 left-full hidden cursor-ew-resize items-center px-2 sm:flex"
-        onDragStart={(e) => {
-          setIsDragging(true);
-          // @ts-ignore
-          offsetX.current = e.clientX - e.target.getBoundingClientRect().left;
-          startX.current = e.clientX;
-          e.dataTransfer.setDragImage(shadowImage.current!, 0, 0);
-        }}
-        onDrag={(e) => {
-          if (e.clientX !== 0 && lastXDuringDrag.current !== e.clientX) {
-            const x = e.clientX - offsetX.current! - bounds.right;
-            lastXDuringDrag.current = e.clientX;
-            if (width! + x > maxWidth.current!) {
-              setWidth(maxWidth.current);
-            } else if (width! + x < minWidth) {
-              setWidth(minWidth);
-            } else {
-              setWidth((prev) => prev! + x);
-            }
-          }
-        }}
-        onDragEnd={() => {
-          setIsDragging(false);
-        }}
-        onDragOver={(e) => {
-          e.preventDefault();
-          e.dataTransfer.dropEffect = "move";
-        }}
-        draggable
-      >
+    <Tabs defaultValue="preview" className="w-full">
+      <TabsList>
+        <TabsTrigger value="preview">預覽</TabsTrigger>
+        <TabsTrigger value="code">Code</TabsTrigger>
+      </TabsList>
+      <TabsContent value="preview" className="w-full">
         <div
-          className={cn(
-            "h-8 w-1.5 rounded-full bg-gray-400 group-hover:bg-gray-500",
-            { "bg-gray-500": isDragging },
-          )}
+          ref={ref}
+          className="relative inline-block w-full"
+          style={{ width, height }}
+        >
+          <iframe
+            src={`/components/demo/${componentId}/${variantId}`}
+            className={cn("h-full w-full rounded-md border border-gray-200", {
+              "pointer-events-none": isDragging,
+            })}
+            style={{ width }}
+          />
+          <div
+            className="group absolute inset-y-0 left-full hidden cursor-ew-resize items-center px-2 sm:flex"
+            onDragStart={(e) => {
+              setIsDragging(true);
+              offsetX.current =
+                // @ts-ignore
+                e.clientX - e.target.getBoundingClientRect().left;
+              startX.current = e.clientX;
+              e.dataTransfer.setDragImage(shadowImage.current!, 0, 0);
+            }}
+            onDrag={(e) => {
+              if (e.clientX !== 0 && lastXDuringDrag.current !== e.clientX) {
+                const x = e.clientX - offsetX.current! - bounds.right;
+                lastXDuringDrag.current = e.clientX;
+                if (width! + x > maxWidth.current!) {
+                  setWidth(maxWidth.current);
+                } else if (width! + x < minWidth) {
+                  setWidth(minWidth);
+                } else {
+                  setWidth((prev) => prev! + x);
+                }
+              }
+            }}
+            onDragEnd={() => {
+              setIsDragging(false);
+            }}
+            onDragOver={(e) => {
+              e.preventDefault();
+              e.dataTransfer.dropEffect = "move";
+            }}
+            draggable
+          >
+            <div
+              className={cn(
+                "h-8 w-1.5 rounded-full bg-gray-400 group-hover:bg-gray-500",
+                { "bg-gray-500": isDragging },
+              )}
+            />
+          </div>
+        </div>
+      </TabsContent>
+      <TabsContent value="code">
+        <div
+          className="prose-pre:mt-0"
+          dangerouslySetInnerHTML={{ __html: componentCodeHtml }}
         />
-      </div>
-    </div>
+      </TabsContent>
+    </Tabs>
   );
 }
 
