@@ -94,8 +94,12 @@ function ComponentDemo({
     <Tabs defaultValue="preview" className="w-full">
       <TabsList>
         <TabsTrigger value="preview">預覽</TabsTrigger>
-        <TabsTrigger value="templateCode">Template Code</TabsTrigger>
-        <TabsTrigger value="componentCode">Component Code</TabsTrigger>
+        {templateCode && (
+          <TabsTrigger value="templateCode">Template Code</TabsTrigger>
+        )}
+        {componentCode && (
+          <TabsTrigger value="componentCode">Component Code</TabsTrigger>
+        )}
       </TabsList>
       <TabsContent value="preview" className="w-full">
         <div
@@ -151,30 +155,34 @@ function ComponentDemo({
           </div>
         </div>
       </TabsContent>
-      <TabsContent value="templateCode" className="w-full">
-        <div className="relative">
-          <div className="absolute right-4 top-4">
-            <CopyButton content={templateCode} />
+      {templateCode && (
+        <TabsContent value="templateCode" className="w-full">
+          <div className="relative">
+            <div className="absolute right-4 top-4">
+              <CopyButton content={templateCode} />
+            </div>
+            <div
+              // TODO: figure out width issue
+              className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
+              dangerouslySetInnerHTML={{ __html: templateCodeHtml }}
+            />
           </div>
-          <div
-            // TODO: figure out width issue
-            className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
-            dangerouslySetInnerHTML={{ __html: templateCodeHtml }}
-          />
-        </div>
-      </TabsContent>
-      <TabsContent value="componentCode" className="w-full">
-        <div className="relative">
-          <div className="absolute right-4 top-4">
-            <CopyButton content={componentCode} />
+        </TabsContent>
+      )}
+      {componentCode && (
+        <TabsContent value="componentCode" className="w-full">
+          <div className="relative">
+            <div className="absolute right-4 top-4">
+              <CopyButton content={componentCode} />
+            </div>
+            <div
+              // TODO: figure out width issue
+              className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
+              dangerouslySetInnerHTML={{ __html: componentCodeHtml }}
+            />
           </div>
-          <div
-            // TODO: figure out width issue
-            className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
-            dangerouslySetInnerHTML={{ __html: componentCodeHtml }}
-          />
-        </div>
-      </TabsContent>
+        </TabsContent>
+      )}
     </Tabs>
   );
 }

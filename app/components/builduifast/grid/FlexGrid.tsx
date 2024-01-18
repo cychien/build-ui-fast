@@ -36,4 +36,13 @@ function Demo() {
   );
 }
 
+const templateCode = `\
+  <div className="flex flex-wrap gap-3">
+    <div className="flex-1">1</div>
+    <div className="flex-1">2</div>
+    <div className="flex-1">3</div>
+  </div>
+`;
+
 export default Demo;
+export { templateCode };

@@ -2,9 +2,13 @@ import { ComponentDemo } from '../../site/ComponentDemo'
 
 ## Flex grid
 
+只要 Row 有剩餘空間，Item 會延長自身來充滿 Row。若想取消這行為，可移除 `flex-1`。
+
 <ComponentDemo componentId="grid" variantId="FlexGrid" />
 
 ## Fluid grid
+
+只要 Row 有大於最小寬度的空間(範例定義 150px)，就會再裝一個 Item，如果沒有，其內的所有 Item 會延長自身來充滿 Row。
 
 <ComponentDemo componentId="grid" variantId="FluidGrid" />
 

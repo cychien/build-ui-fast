@@ -40,4 +40,13 @@ function Demo() {
   );
 }
 
+const templateCode = `\
+  <div className="grid grid-cols-[repeat(auto-fill,_minmax(min(150px,_100%),_1fr))] gap-3">
+    <div>1</div>
+    <div>2</div>
+    <div>3</div>
+  </div>
+`;
+
 export default Demo;
+export { templateCode };

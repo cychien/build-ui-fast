@@ -58,7 +58,7 @@ export default function Route() {
           ))}
         </ul>
 
-        <main className="prose max-w-none prose-h2:mb-3 prose-h2:text-base prose-h2:font-medium">
+        <main className="prose max-w-none prose-h2:mb-3 prose-h2:text-base prose-h2:font-bold prose-p:text-sm">
           <DocComponent />
         </main>
       </div>
