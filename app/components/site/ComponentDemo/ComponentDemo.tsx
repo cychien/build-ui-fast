@@ -1,3 +1,5 @@
+import { Button } from "../Button";
+import { Check, Copy } from "lucide-react";
 import * as React from "react";
 import useMeasure from "react-use-measure";
 import {
@@ -48,15 +50,25 @@ function ComponentDemo({
   if (!component) return null;
 
   const templateCode = component.templateCode;
+  const templateCodeHtml = React.useMemo(() => {
+    if (!templateCode) return "";
+    return (
+      highlighter?.codeToHtml(templateCode, {
+        lang: "tsx",
+        theme: "material-theme",
+      }) ?? ""
+    );
+  }, [highlighter, templateCode]);
   const componentCode = component.componentCode;
-  const componentCodeHtml = React.useMemo(
-    () =>
+  const componentCodeHtml = React.useMemo(() => {
+    if (!componentCode) return "";
+    return (
       highlighter?.codeToHtml(componentCode, {
         lang: "tsx",
         theme: "material-theme",
-      }) ?? "",
-    [highlighter, componentCode],
-  );
+      }) ?? ""
+    );
+  }, [highlighter, componentCode]);
 
   React.useEffect(() => {
     getHighlighter().then((highlighter) => {
@@ -82,7 +94,8 @@ function ComponentDemo({
     <Tabs defaultValue="preview" className="w-full">
       <TabsList>
         <TabsTrigger value="preview">預覽</TabsTrigger>
-        <TabsTrigger value="code">Code</TabsTrigger>
+        <TabsTrigger value="templateCode">Template Code</TabsTrigger>
+        <TabsTrigger value="componentCode">Component Code</TabsTrigger>
       </TabsList>
       <TabsContent value="preview" className="w-full">
         <div
@@ -138,13 +151,56 @@ function ComponentDemo({
           </div>
         </div>
       </TabsContent>
-      <TabsContent value="code">
-        <div
-          className="prose-pre:mt-0"
-          dangerouslySetInnerHTML={{ __html: componentCodeHtml }}
-        />
+      <TabsContent value="templateCode" className="w-full">
+        <div className="relative">
+          <div className="absolute right-4 top-4">
+            <CopyButton content={templateCode} />
+          </div>
+          <div
+            // TODO: figure out width issue
+            className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
+            dangerouslySetInnerHTML={{ __html: templateCodeHtml }}
+          />
+        </div>
+      </TabsContent>
+      <TabsContent value="componentCode" className="w-full">
+        <div className="relative">
+          <div className="absolute right-4 top-4">
+            <CopyButton content={componentCode} />
+          </div>
+          <div
+            // TODO: figure out width issue
+            className="prose-code:block prose-code:w-5 prose-pre:mt-0 prose-pre:max-h-[550px] prose-pre:px-1 prose-pre:py-6"
+            dangerouslySetInnerHTML={{ __html: componentCodeHtml }}
+          />
+        </div>
       </TabsContent>
     </Tabs>
+  );
+}
+
+type CopyButtonProps = {
+  content: string;
+};
+
+function CopyButton({ content }: CopyButtonProps) {
+  const [copied, setCopied] = React.useState(false);
+
+  return (
+    <Button
+      className="bg-[#a9b7be]/30 text-gray-200 transition-colors hover:enabled:bg-[#a9b7be]/40"
+      iconButton
+      onClick={() => {
+        navigator.clipboard.writeText(content).then(() => {
+          setCopied(true);
+          setTimeout(() => {
+            setCopied(false);
+          }, 800);
+        });
+      }}
+    >
+      {copied ? <Check className="size-5" /> : <Copy className="size-5" />}
+    </Button>
   );
 }
 

@@ -4,11 +4,11 @@ import * as React from "react";
 import { cn } from "~/components/builduifast/utils";
 
 const buttonVariant = cva(
-  "inline-flex items-center justify-center rounded-lg font-medium text-white transition-colors disabled:opacity-50 disabled:pointer-events-none",
+  "inline-flex items-center justify-center rounded-lg font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none",
   {
     variants: {
       variant: {
-        default: "bg-gray-900 shadow hover:enabled:bg-gray-900/80",
+        default: "text-white bg-gray-900 shadow hover:enabled:bg-gray-900/80",
         outline:
           "text-gray-700 shadow-sm border border-gray-300 hover:enabled:bg-gray-100 hover:enabled:text-gray-900",
         secondary:
@@ -80,18 +80,18 @@ function Demo() {
   );
 }
 
-const componentCode = `
+const componentCode = `\
   import type { VariantProps } from "class-variance-authority";
   import { cva } from "class-variance-authority";
   import * as React from "react";
   import { cn } from "~/utils";
 
   const buttonVariant = cva(
-    "inline-flex items-center justify-center rounded-lg font-medium text-white transition-colors disabled:opacity-50 disabled:pointer-events-none",
+    "inline-flex items-center justify-center rounded-lg font-medium transition-colors disabled:opacity-50 disabled:pointer-events-none",
     {
       variants: {
         variant: {
-          default: "bg-gray-900 shadow hover:enabled:bg-gray-900/80",
+          default: "text-white bg-gray-900 shadow hover:enabled:bg-gray-900/80",
           outline:
             "text-gray-700 shadow-sm border border-gray-300 hover:enabled:bg-gray-100 hover:enabled:text-gray-900",
           secondary:
@@ -152,5 +152,18 @@ const componentCode = `
   Button.displayName = "Button";
 `;
 
+const templateCode = `\
+  // default
+  <button className="inline-flex h-10 items-center justify-center rounded-lg bg-gray-900 px-4 py-2.5 text-sm font-medium text-white shadow transition-colors hover:enabled:bg-gray-900/80 disabled:pointer-events-none disabled:opacity-50">Button</button>
+  // outline
+  <button className="inline-flex h-10 items-center justify-center rounded-lg border border-gray-300 px-4 py-2.5 text-sm font-medium text-gray-700 shadow-sm transition-colors hover:enabled:bg-gray-100 hover:enabled:text-gray-900 disabled:pointer-events-none disabled:opacity-50">Button</button>
+  // secondary
+  <button className="inline-flex h-10 items-center justify-center rounded-lg bg-gray-100 px-4 py-2.5 text-sm font-medium text-gray-900 shadow-sm transition-colors hover:enabled:bg-gray-100/80 disabled:pointer-events-none disabled:opacity-50">Button</button>
+  // ghost
+  <button className="inline-flex h-10 items-center justify-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 transition-colors hover:enabled:bg-gray-100 hover:enabled:text-gray-900 disabled:pointer-events-none disabled:opacity-50">Button</button>
+  // link
+  <button className="inline-flex h-10 items-center justify-center rounded-lg px-4 py-2.5 text-sm font-medium text-gray-700 underline-offset-4 transition-colors hover:enabled:text-gray-900 hover:enabled:underline disabled:pointer-events-none disabled:opacity-50">Button</button>
+`;
+
 export default Demo;
-export { Button, componentCode };
+export { Button, templateCode, componentCode };
