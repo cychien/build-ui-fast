@@ -59,6 +59,9 @@ dependencies:
   react-use-measure:
     specifier: ^2.1.1
     version: 2.1.1(react-dom@18.2.0)(react@18.2.0)
+  shikiji:
+    specifier: ^0.9.0
+    version: 0.9.18
   tailwind-merge:
     specifier: ^2.0.0
     version: 2.0.0
@@ -118,9 +121,6 @@ devDependencies:
   remark-mdx-frontmatter:
     specifier: ^4.0.0
     version: 4.0.0
-  shikiji:
-    specifier: ^0.9.0
-    version: 0.9.18
   tailwindcss:
     specifier: ^3.4.0
     version: 3.4.0
@@ -7963,13 +7963,11 @@ packages:
 
   /shikiji-core@0.9.18:
     resolution: {integrity: sha512-PKTXptbrp/WEDjNHV8OFG9KkfhmR0pSd161kzlDDlgQ0HXAnqJYNDSjqsy1CYZMx5bSvLMy42yJj9oFTqmkNTQ==}
-    dev: true
 
   /shikiji@0.9.18:
     resolution: {integrity: sha512-/tFMIdV7UQklzN13VjF0/XFzmii6C606Jc878hNezvB8ZR8FG8FW9j0I4J9EJre0owlnPntgLVPpHqy27Gs+DQ==}
     dependencies:
       shikiji-core: 0.9.18
-    dev: true
 
   /side-channel@1.0.4:
     resolution: {integrity: sha512-q5XPytqFEIKHkGdiMIrY10mvLRvnQh42/+GoBlFW3b2LXLE2xxJpZFdm94we0BaoV3RwJyGqg5wS7epxTv0Zvw==}
