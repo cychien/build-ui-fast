@@ -9,7 +9,7 @@ function Background() {
 }
 
 const templateCode = `\
-  <div className="image-bg bg-[length:2400px] bg-top bg-no-repeat">
+  <div className="image-bg bg-[length:100%] bg-top bg-no-repeat">
     Content
   </div>
 
