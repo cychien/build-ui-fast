@@ -17,6 +17,11 @@ export default function ComponentsPage() {
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
             />
             <ComponentCard
+              name="Hero"
+              componentId="hero"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
+            <ComponentCard
               name="Footer"
               componentId="footer"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
