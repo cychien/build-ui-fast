@@ -9,11 +9,13 @@ import {
   SelectValue,
 } from "~/components/site/Select";
 
+// TODO: no longer depend on bg-white
+
 function Tabs() {
   const [tabValue, setTabValue] = React.useState("member");
 
   return (
-    <div>
+    <div className="bg-white">
       <TabsPrimitive.Root
         value={tabValue}
         onValueChange={(v) => {
@@ -21,56 +23,60 @@ function Tabs() {
         }}
         className="hidden sm:block"
       >
-        <TabsPrimitive.List className="flex space-x-4 border-b border-gray-200">
+        <TabsPrimitive.List className="flex space-x-1">
           <TabsPrimitive.Trigger
             value="member"
-            className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+            className="relative px-3 py-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
           >
             成員
             {tabValue === "member" && (
               <motion.div
                 layoutId="indicator"
                 transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                style={{ borderRadius: 9999 }}
               />
             )}
           </TabsPrimitive.Trigger>
           <TabsPrimitive.Trigger
             value="basic"
-            className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+            className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
           >
             基本設定
             {tabValue === "basic" && (
               <motion.div
                 layoutId="indicator"
                 transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                style={{ borderRadius: 9999 }}
               />
             )}
           </TabsPrimitive.Trigger>
           <TabsPrimitive.Trigger
             value="api-key"
-            className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+            className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
           >
             API 金鑰
             {tabValue === "api-key" && (
               <motion.div
                 layoutId="indicator"
                 transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                style={{ borderRadius: 9999 }}
               />
             )}
           </TabsPrimitive.Trigger>
           <TabsPrimitive.Trigger
             value="billing"
-            className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+            className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
           >
             付款資訊
             {tabValue === "billing" && (
               <motion.div
                 layoutId="indicator"
                 transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                style={{ borderRadius: 9999 }}
               />
             )}
           </TabsPrimitive.Trigger>
@@ -122,13 +128,13 @@ const templateCode = `\
     SelectItem,
     SelectTrigger,
     SelectValue,
-  } from "~/components/ui/Select";
+  } from "~/components/site/Select";
 
   function Tabs() {
     const [tabValue, setTabValue] = React.useState("member");
 
     return (
-      <div>
+      <div className="bg-white">
         <TabsPrimitive.Root
           value={tabValue}
           onValueChange={(v) => {
@@ -136,56 +142,60 @@ const templateCode = `\
           }}
           className="hidden sm:block"
         >
-          <TabsPrimitive.List className="flex space-x-4 border-b border-gray-200">
+          <TabsPrimitive.List className="flex space-x-1">
             <TabsPrimitive.Trigger
               value="member"
-              className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+              className="relative px-3 py-2 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
             >
               成員
               {tabValue === "member" && (
                 <motion.div
                   layoutId="indicator"
                   transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                  className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                  className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                  style={{ borderRadius: 9999 }}
                 />
               )}
             </TabsPrimitive.Trigger>
             <TabsPrimitive.Trigger
               value="basic"
-              className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+              className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
             >
               基本設定
               {tabValue === "basic" && (
                 <motion.div
                   layoutId="indicator"
                   transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                  className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                  className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                  style={{ borderRadius: 9999 }}
                 />
               )}
             </TabsPrimitive.Trigger>
             <TabsPrimitive.Trigger
               value="api-key"
-              className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+              className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
             >
               API 金鑰
               {tabValue === "api-key" && (
                 <motion.div
                   layoutId="indicator"
                   transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                  className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                  className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                  style={{ borderRadius: 9999 }}
                 />
               )}
             </TabsPrimitive.Trigger>
             <TabsPrimitive.Trigger
               value="billing"
-              className="relative px-1 pb-3 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
+              className="relative px-3 py-1.5 text-sm font-medium text-gray-500 transition-colors hover:text-gray-900 disabled:pointer-events-none disabled:opacity-50 data-[state=active]:text-gray-900"
             >
               付款資訊
               {tabValue === "billing" && (
                 <motion.div
                   layoutId="indicator"
                   transition={{ type: "spring", duration: 0.6, bounce: 0.1 }}
-                  className="absolute inset-x-0 -bottom-px h-0.5 bg-gray-900"
+                  className="absolute inset-0 z-10 bg-white mix-blend-difference"
+                  style={{ borderRadius: 9999 }}
                 />
               )}
             </TabsPrimitive.Trigger>
