@@ -49,14 +49,19 @@ export default function ComponentsPage() {
         >
           <ComponentsGrid>
             <ComponentCard
+              name="Button"
+              componentId="button"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+            />
+            <ComponentCard
               name="Announcement"
               componentId="announcement"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
             />
             <ComponentCard
-              name="Button"
-              componentId="button"
-              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              name="Tabs"
+              componentId="tabs"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
             />
             <ComponentCard
               name="可伸縮元素"
