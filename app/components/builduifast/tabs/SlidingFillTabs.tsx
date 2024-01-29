@@ -133,6 +133,7 @@ function Tabs() {
         <TabsPrimitive.Root
           value={tabValue}
           ref={hiddenTabsRef}
+          aria-hidden
           className="absolute inset-0 bg-gray-900 will-change-auto"
           style={
             !showHiddenTabs
@@ -338,6 +339,7 @@ const templateCode = `\
           <TabsPrimitive.Root
             value={tabValue}
             ref={hiddenTabsRef}
+            aria-hidden
             className="absolute inset-0 bg-gray-900 will-change-auto"
             style={
               !showHiddenTabs
