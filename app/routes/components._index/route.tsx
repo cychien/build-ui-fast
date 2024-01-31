@@ -3,13 +3,22 @@ import { Link } from "@remix-run/react";
 export default function ComponentsPage() {
   return (
     <div className="container mx-auto">
-      <h1 className="py-6 text-3xl font-semibold md:py-12">Components</h1>
+      <div className="py-6 md:py-12">
+        <div className="group inline-flex items-center rounded-full border border-gray-300 bg-gray-50 py-1 pl-1 pr-2.5 hover:bg-gray-100">
+          <span className="rounded-full bg-gray-800 px-2 py-0.5 text-sm font-medium text-gray-50">
+            產品製作中
+          </span>
+          <span className="ml-2 flex items-center">
+            <span className="text-sm font-medium text-gray-600">
+              全部 components 免費使用
+            </span>
+          </span>
+        </div>
+        <h1 className="mt-4 text-3xl font-semibold">Components</h1>
+      </div>
 
       <div className="divide-y divide-gray-200 md:grid md:grid-cols-[220px_1fr] md:gap-x-16 lg:grid-cols-[260px_1fr] xl:grid-cols-[300px_1fr]">
-        <Row
-          name="佈局用 components"
-          description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
-        >
+        <Row name="佈局用 components" description="快速拉出整體 layout">
           <ComponentsGrid>
             <ComponentCard
               name="Header"
@@ -43,10 +52,7 @@ export default function ComponentsPage() {
             />
           </ComponentsGrid>
         </Row>
-        <Row
-          name="基礎 components"
-          description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
-        >
+        <Row name="基礎 components" description="呈現更精緻的個別組件">
           <ComponentsGrid>
             <ComponentCard
               name="Button"
@@ -72,12 +78,9 @@ export default function ComponentsPage() {
         </Row>
         <Row
           name="複合 components"
-          description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
+          description="節省用基礎 components 拼裝的時間"
         ></Row>
-        <Row
-          name="各式效果"
-          description="玉山山貌高峻，最高峰玉山主峰四面皆是陡壁危崖，南北兩側是千仞峭壁，西側絕壑深"
-        >
+        <Row name="各式效果" description="讓整體視覺更上層樓">
           <ComponentsGrid>
             <ComponentCard
               name="進場動畫"

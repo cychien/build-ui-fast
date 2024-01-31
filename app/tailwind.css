@@ -100,3 +100,23 @@
       url("https://res.cloudinary.com/dgppby8lr/image/upload/w_2400,q_auto,dpr_2.0/g_north_east,x_100,y_100,l_text:roboto_84:avif%202x/v1705736997/build-ui-fast/image-bg_dfgg2a.avif") 2x);
   }
 }
+
+@keyframes stagger-enter {
+  0% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  100% {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+.stagger-enter-item {
+  --stagger: 0;
+  --delay: 120ms;
+  --start: 0ms;
+
+  animation: stagger-enter 0.6s both;
+  animation-delay: calc(var(--stagger) * var(--delay) + var(--start));
+}

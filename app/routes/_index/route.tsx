@@ -83,7 +83,10 @@ export default function Index() {
 
       <section className="container mx-auto pt-12 md:pt-16 lg:pb-16 lg:pt-24">
         <div className="inline-block md:flex md:justify-center">
-          <div className="-z-[5] flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 shadow lg:py-1">
+          <div
+            className="stagger-enter-item -z-[5] flex items-center rounded-lg border border-gray-300 bg-white px-3 py-1.5 shadow lg:py-1"
+            style={{ "--stagger": 1 } as React.CSSProperties}
+          >
             <span className="relative flex h-2 w-2">
               <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary-400 opacity-75" />
               <span className="relative inline-flex h-2 w-2 rounded-full bg-primary-600" />
@@ -94,14 +97,23 @@ export default function Index() {
             <HeartHandshake className="ml-2 h-4 w-4 flex-shrink-0 text-gray-500" />
           </div>
         </div>
-        <h1 className="mt-8 text-4xl font-semibold leading-[44px] md:mt-8 md:text-center md:text-6xl md:leading-[72px]">
+        <h1
+          className="stagger-enter-item mt-8 text-4xl font-semibold leading-[44px] md:mt-8 md:text-center md:text-6xl md:leading-[72px]"
+          style={{ "--stagger": 2 } as React.CSSProperties}
+        >
           以前所未有的速度打造 UI
         </h1>
-        <p className="mt-6 text-lg text-gray-600 md:mx-auto md:mt-8 md:max-w-3xl md:text-center md:text-xl md:leading-[150%]">
+        <p
+          className="stagger-enter-item mt-6 text-lg text-gray-600 md:mx-auto md:mt-8 md:max-w-3xl md:text-center md:text-xl md:leading-[150%]"
+          style={{ "--stagger": 3 } as React.CSSProperties}
+        >
           一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI
           構建指南，幫助你高速開發應用，快速實現創意想法
         </p>
-        <div className="mt-8 md:mt-20 md:flex md:justify-center">
+        <div
+          className="stagger-enter-item mt-8 md:mt-20 md:flex md:justify-center"
+          style={{ "--stagger": 4 } as React.CSSProperties}
+        >
           {state === "success" ? (
             <div className="flex min-h-[48px] space-x-2 ease-out animate-in fade-in-0 zoom-in">
               <CheckCircle className="h-6 w-6 flex-shrink-0 text-success-600 " />
@@ -153,12 +165,15 @@ export default function Index() {
         </div>
       </section>
 
-      <section className="container mx-auto py-24">
+      <section
+        className="stagger-enter-item container mx-auto py-24"
+        style={{ "--stagger": 5, "--start": "300ms" } as React.CSSProperties}
+      >
         <div className="font-semibold text-primary-700 md:text-center">
-          特點
+          Components 特點
         </div>
         <h2 className="mt-3 text-2xl font-semibold text-gray-700 md:text-center">
-          4 個 Build UI Fast 的特別之處
+          4 個 Build UI Fast Components 的特別之處
         </h2>
         <div className="mt-12 flex flex-wrap gap-6">
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
@@ -166,13 +181,13 @@ export default function Index() {
               <Blocks className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
-              開發效率高且易於修改
+              加速開發且易於修改
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
-              用過了市面上大部分的 component library，有些內帶 style，有些是
-              headless，但這些工具要不太原始，要不封裝太好難以修改，因此 build
-              ui fast 的 component 只把最難 implement 的地方實作完
-              (通常是動畫)，而其他 style 都是用 tailwindcss，隨便你怎麼改
+              用過市面上大部分的 component library，有些內帶 style，有些是
+              headless，但這些工具要不太原始，要不封裝太好難以修改，因此 Build
+              UI Fast 的 component 只把最難實作的地方實作完 (動畫、RWD)，而其他
+              style 都是用 tailwindcss，隨便你怎麼改
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
@@ -197,7 +212,7 @@ export default function Index() {
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
               這套 components 是我平時開發 side project
-              會用的工具箱，所以你可以預期 component 數量及品質都會持續成長
+              會用的工具箱，所以你可以預期 components 數量及品質都會持續成長
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">

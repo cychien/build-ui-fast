@@ -1,6 +1,7 @@
 import * as Accordion from "@radix-ui/react-accordion";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
+import { Link } from "@remix-run/react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
   Menu,
@@ -46,7 +47,7 @@ function Header() {
               <NavigationMenu.List className="hidden h-full lg:flex lg:space-x-8">
                 <NavigationMenu.Item value="product" className="flex">
                   <NavigationMenu.Trigger className="flex items-center space-x-2 font-medium text-gray-600">
-                    <span>產品內容</span>
+                    <span>內容</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content forceMount>
@@ -68,35 +69,44 @@ function Header() {
                         >
                           <div className="flex flex-1 flex-col gap-6 py-8 xl:flex-row">
                             <div className="flex-1 space-y-3">
-                              <div className="text-primary-600 text-sm font-semibold">
+                              <div className="text-sm font-semibold text-primary-600">
                                 Components
                               </div>
                               <div className="space-y-1">
-                                <div className="flex space-x-4 p-3">
-                                  <Layout className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                <Link
+                                  to="/components"
+                                  className="flex space-x-4 p-3"
+                                >
+                                  <Layout className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
                                     <div className="font-semibold">
                                       佈局用 components
                                     </div>
                                     <div className="text-sm text-gray-600">
-                                      Header, Footer, 2 欄式佈局, 3 欄式佈局
-                                      (gitbook), Masonry layout...
+                                      Header, Hero, Footer,
+                                      多欄式佈局...，方便快速拉出整體 layout
                                     </div>
                                   </div>
-                                </div>
-                                <div className="flex space-x-4 p-3">
-                                  <Cuboid className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                </Link>
+                                <Link
+                                  to="/components"
+                                  className="flex space-x-4 p-3"
+                                >
+                                  <Cuboid className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
                                     <div className="font-semibold">
                                       基礎 components
                                     </div>
                                     <div className="text-sm text-gray-600">
-                                      Button, Popover, Dialog, Dropdown, Tabs,
-                                      Form, Slider, Switch, Command palette...
+                                      Button, Announcement, Tabs, Menu,
+                                      Image...，呈現更精緻的個別組件
                                     </div>
                                   </div>
-                                </div>
-                                <div className="flex space-x-4 p-3">
+                                </Link>
+                                <Link
+                                  to="/components"
+                                  className="flex space-x-4 p-3"
+                                >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
                                     width="24"
@@ -107,7 +117,7 @@ function Header() {
                                     strokeWidth="2"
                                     strokeLinecap="round"
                                     strokeLinejoin="round"
-                                    className="text-primary-600 h-6 w-6 flex-shrink-0"
+                                    className="h-6 w-6 flex-shrink-0 text-primary-600"
                                   >
                                     <rect
                                       width="18"
@@ -134,28 +144,31 @@ function Header() {
                                       拼裝的時間
                                     </div>
                                   </div>
-                                </div>
-                                <div className="flex space-x-4 p-3">
-                                  <Sparkles className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                </Link>
+                                <Link
+                                  to="/components"
+                                  className="flex space-x-4 p-3"
+                                >
+                                  <Sparkles className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
                                     <div className="font-semibold">
                                       各式效果
                                     </div>
                                     <div className="text-sm text-gray-600">
-                                      svg drawing, 聖光背景, 光暈...
-                                      各式華麗視覺效果
+                                      svg drawing, 入場動畫,
+                                      光暈...，讓整體視覺更上層樓
                                     </div>
                                   </div>
-                                </div>
+                                </Link>
                               </div>
                             </div>
                             <div className="flex-1 space-y-3">
-                              <div className="text-primary-600 text-sm font-semibold">
+                              <div className="text-sm font-semibold text-primary-600">
                                 UI 教學
                               </div>
                               <div className="space-y-1">
                                 <div className="flex space-x-4 p-3">
-                                  <PencilRuler className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                  <PencilRuler className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
                                     <div className="font-semibold">MDX</div>
                                     <div className="text-sm text-gray-600">
@@ -166,7 +179,7 @@ function Header() {
                                   </div>
                                 </div>
                                 <div className="flex space-x-4 p-3">
-                                  <Moon className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                  <Moon className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
                                     <div className="font-semibold">
                                       Dark Mode
@@ -259,18 +272,18 @@ function Header() {
                                 <Accordion.Content className="-mx-3 overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
                                   <div className="space-y-6 px-6 py-6">
                                     <div className="space-y-3">
-                                      <div className="text-primary-600 text-sm font-semibold">
+                                      <div className="text-sm font-semibold text-primary-600">
                                         Components
                                       </div>
                                       <div className="space-y-1">
                                         <div className="flex space-x-4 py-3">
-                                          <Layout className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                          <Layout className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                           <div className="font-semibold">
                                             佈局用 components
                                           </div>
                                         </div>
                                         <div className="flex space-x-4 py-3">
-                                          <Cuboid className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                          <Cuboid className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                           <div className="font-semibold">
                                             基礎 components
                                           </div>
@@ -286,7 +299,7 @@ function Header() {
                                             strokeWidth="2"
                                             strokeLinecap="round"
                                             strokeLinejoin="round"
-                                            className="text-primary-600 h-6 w-6 flex-shrink-0"
+                                            className="h-6 w-6 flex-shrink-0 text-primary-600"
                                           >
                                             <rect
                                               width="18"
@@ -308,7 +321,7 @@ function Header() {
                                           </div>
                                         </div>
                                         <div className="flex space-x-4 py-3">
-                                          <Sparkles className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                          <Sparkles className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                           <div className="font-semibold">
                                             各式效果
                                           </div>
@@ -316,18 +329,18 @@ function Header() {
                                       </div>
                                     </div>
                                     <div className="space-y-3">
-                                      <div className="text-primary-600 text-sm font-semibold">
+                                      <div className="text-sm font-semibold text-primary-600">
                                         UI 教學
                                       </div>
                                       <div className="space-y-1">
                                         <div className="flex space-x-4 py-3">
-                                          <PencilRuler className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                          <PencilRuler className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                           <div className="font-semibold">
                                             MDX
                                           </div>
                                         </div>
                                         <div className="flex space-x-4 py-3">
-                                          <Moon className="text-primary-600 h-6 w-6 flex-shrink-0" />
+                                          <Moon className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                           <div className="font-semibold">
                                             Dark Mode
                                           </div>

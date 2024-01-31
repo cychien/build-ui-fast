@@ -9,4 +9,5 @@ export const componentNames: Record<string, string> = {
   announcement: "Announcement",
   tabs: "Tabs",
   resizable: "可伸縮元素",
+  "entry-animation": "進場動畫",
 };
