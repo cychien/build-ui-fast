@@ -70,6 +70,11 @@ export default function ComponentsPage() {
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
             />
             <ComponentCard
+              name="Card"
+              componentId="card"
+              // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+            />
+            <ComponentCard
               name="可伸縮元素"
               componentId="resizable"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"

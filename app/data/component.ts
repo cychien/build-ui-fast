@@ -8,6 +8,7 @@ export const componentNames: Record<string, string> = {
   button: "Button",
   announcement: "Announcement",
   tabs: "Tabs",
+  card: "Card",
   resizable: "可伸縮元素",
   "entry-animation": "進場動畫",
 };
