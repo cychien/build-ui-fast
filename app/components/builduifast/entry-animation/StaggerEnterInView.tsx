@@ -1,107 +1,99 @@
 import { Button } from "../button/Button";
+import { useAnimate, useInView } from "framer-motion";
 import { RotateCcw } from "lucide-react";
 import * as React from "react";
 
-function EntryAnimation() {
-  return (
-    <>
-      <style>{`
-        @keyframes demo-stagger-enter {
-          0% {
-            opacity: 0;
-            transform: translateY(10px);
-          }
-          100% {
-            opacity: 1;
-            transform: none;
-          }
-        }
-        
-        .stagger-enter * {
-          --stagger: 0;
+type StaggeredParagraphProps = {
+  text: string;
+  whileInView: () => void;
+  whileNotInView: () => void;
+  stagger: number;
+  appearImmediately: boolean;
+};
 
-          animation: demo-stagger-enter 0.6s both;
-          animation-delay: calc(var(--stagger) * 120ms);
-        }
-    `}</style>
-      <div className="stagger-enter mx-auto max-w-xl space-y-6">
-        <p>This is an example:</p>
-        <p style={{ "--stagger": 1 } as React.CSSProperties}>
-          Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua.
-        </p>
-        <p style={{ "--stagger": 2 } as React.CSSProperties}>
-          Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-          nisi ut aliquip ex ea commodo consequat.
-        </p>
-        <p style={{ "--stagger": 3 } as React.CSSProperties}>
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-          dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-          proident, sunt in culpa qui officia deserunt mollit anim id est
-          laborum.
-        </p>
-        <p style={{ "--stagger": 4 } as React.CSSProperties}>
-          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo.
-        </p>
-      </div>
-    </>
+function StaggeredParagraph({
+  text,
+  whileInView,
+  whileNotInView,
+  stagger,
+  appearImmediately,
+}: StaggeredParagraphProps) {
+  const [scope, animate] = useAnimate();
+  const isInView = useInView(scope);
+  const animation = React.useRef<ReturnType<typeof animate>>();
+
+  React.useEffect(() => {
+    if (isInView) {
+      whileInView();
+    } else {
+      whileNotInView();
+      if (animation.current) {
+        animation.current.complete();
+      }
+    }
+  }, [isInView]);
+
+  React.useEffect(() => {
+    if (stagger === -1) return;
+    const delay = stagger * 0.12;
+    animation.current = animate(
+      scope.current,
+      { opacity: 1, transform: "translateY(0)" },
+      { delay, duration: 0.6 },
+    );
+  }, [stagger]);
+
+  React.useEffect(() => {
+    if (appearImmediately) {
+      if (animation.current) {
+        animation.current.complete();
+      } else {
+        animate(scope.current, { opacity: 1, transform: "translateY(0)" });
+      }
+    }
+  }, [appearImmediately]);
+
+  return (
+    <p className="translate-y-[10px] opacity-0" ref={scope}>
+      {text}
+    </p>
   );
 }
 
-const templateCode = `\
-  <div className="stagger-enter space-y-6">
-    <p>This is an example:</p>
-    <p style={{ "--stagger": 1 } as React.CSSProperties}>
-      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
-      eiusmod tempor incididunt ut labore et dolore magna aliqua.
-    </p>
-    <p style={{ "--stagger": 2 } as React.CSSProperties}>
-      Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
-      nisi ut aliquip ex ea commodo consequat.
-    </p>
-    <p style={{ "--stagger": 3 } as React.CSSProperties}>
-      Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
-      dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-      proident, sunt in culpa qui officia deserunt mollit anim id est
-      laborum.
-    </p>
-    <p style={{ "--stagger": 4 } as React.CSSProperties}>
-      Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-      accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-      ab illo inventore veritatis et quasi architecto beatae vitae dicta
-      sunt explicabo.
-    </p>
-  </div>
+function StaggeredParagraphsContainer() {
+  const [visibleIndexes, setVisibleIndexes] = React.useState<number[]>([]);
 
-  // CSS, write in the proper place
-  @keyframes demo-stagger-enter {
-    0% {
-      opacity: 0;
-      transform: translateY(10px);
-    }
-    100% {
-      opacity: 1;
-      transform: none;
-    }
-  }
-  
-  .stagger-enter * {
-    --stagger: 0;
+  const paragraphs = [...Array(20).keys()].map(
+    () =>
+      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+  );
 
-    animation: demo-stagger-enter 0.6s both;
-    animation-delay: calc(var(--stagger) * 120ms);
-  }
-`;
+  return (
+    <div className="mx-auto max-w-xl space-y-6">
+      {paragraphs.map((p, index) => (
+        <StaggeredParagraph
+          key={index}
+          text={p}
+          whileInView={() => {
+            setVisibleIndexes((prev) => [...prev, index].sort());
+          }}
+          whileNotInView={() => {
+            setVisibleIndexes((prev) => prev.filter((i) => i !== index));
+          }}
+          stagger={visibleIndexes.indexOf(index)}
+          appearImmediately={index < visibleIndexes[0]}
+        />
+      ))}
+    </div>
+  );
+}
 
 function Demo() {
   const [renderCount, setRenderCount] = React.useState(1);
 
   return (
     <div className="p-6" key={renderCount}>
-      <EntryAnimation />
+      <StaggeredParagraphsContainer />
       <Button
         variant="secondary"
         iconButton
@@ -115,6 +107,97 @@ function Demo() {
     </div>
   );
 }
+
+const templateCode = `\
+  import { useAnimate, useInView } from "framer-motion";
+  import { RotateCcw } from "lucide-react";
+  import * as React from "react";
+
+  type StaggeredParagraphProps = {
+    text: string;
+    whileInView: () => void;
+    whileNotInView: () => void;
+    stagger: number;
+    appearImmediately: boolean;
+  };
+
+  function StaggeredParagraph({
+    text,
+    whileInView,
+    whileNotInView,
+    stagger,
+    appearImmediately,
+  }: StaggeredParagraphProps) {
+    const [scope, animate] = useAnimate();
+    const isInView = useInView(scope);
+    const animation = React.useRef<ReturnType<typeof animate>>();
+
+    React.useEffect(() => {
+      if (isInView) {
+        whileInView();
+      } else {
+        whileNotInView();
+        if (animation.current) {
+          animation.current.complete();
+        }
+      }
+    }, [isInView]);
+
+    React.useEffect(() => {
+      if (stagger === -1) return;
+      const delay = stagger * 0.12;
+      animation.current = animate(
+        scope.current,
+        { opacity: 1, transform: "translateY(0)" },
+        { delay, duration: 0.6 },
+      );
+    }, [stagger]);
+
+    React.useEffect(() => {
+      if (appearImmediately) {
+        if (animation.current) {
+          animation.current.complete();
+        } else {
+          animate(scope.current, { opacity: 1, transform: "translateY(0)" });
+        }
+      }
+    }, [appearImmediately]);
+
+    return (
+      <p className="translate-y-[10px] opacity-0" ref={scope}>
+        {text}
+      </p>
+    );
+  }
+
+  function StaggeredParagraphsContainer() {
+    const [visibleIndexes, setVisibleIndexes] = React.useState<number[]>([]);
+
+    const paragraphs = [...Array(20).keys()].map(
+      () =>
+        "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
+    );
+
+    return (
+      <div className="mx-auto max-w-xl space-y-6">
+        {paragraphs.map((p, index) => (
+          <StaggeredParagraph
+            key={index}
+            text={p}
+            whileInView={() => {
+              setVisibleIndexes((prev) => [...prev, index].sort());
+            }}
+            whileNotInView={() => {
+              setVisibleIndexes((prev) => prev.filter((i) => i !== index));
+            }}
+            stagger={visibleIndexes.indexOf(index)}
+            appearImmediately={index < visibleIndexes[0]}
+          />
+        ))}
+      </div>
+    );
+  }
+`;
 
 export default Demo;
 export { templateCode };
