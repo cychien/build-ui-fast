@@ -60,6 +60,10 @@ function StaggeredParagraph({
   );
 }
 
+// first time enter
+// complete and scroll to center
+// not complete and scroll to center
+
 function StaggeredParagraphsContainer() {
   const [visibleIndexes, setVisibleIndexes] = React.useState<number[]>([]);
 
@@ -97,7 +101,7 @@ function Demo() {
       <Button
         variant="secondary"
         iconButton
-        className="absolute right-4 top-4"
+        className="fixed right-4 top-4"
         onClick={() => {
           setRenderCount((prev) => prev + 1);
         }}

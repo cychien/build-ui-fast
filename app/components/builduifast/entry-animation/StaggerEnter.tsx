@@ -25,20 +25,25 @@ function EntryAnimation() {
         }
     `}</style>
       <div className="stagger-enter mx-auto max-w-xl space-y-6">
-        <p>This is an example:</p>
-        <p style={{ "--stagger": 1 } as React.CSSProperties}>
+        <p>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
           eiusmod tempor incididunt ut labore et dolore magna aliqua.
         </p>
-        <p style={{ "--stagger": 2 } as React.CSSProperties}>
+        <p style={{ "--stagger": 1 } as React.CSSProperties}>
           Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
           nisi ut aliquip ex ea commodo consequat.
         </p>
-        <p style={{ "--stagger": 3 } as React.CSSProperties}>
+        <p style={{ "--stagger": 2 } as React.CSSProperties}>
           Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
           dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
           proident, sunt in culpa qui officia deserunt mollit anim id est
           laborum.
+        </p>
+        <p style={{ "--stagger": 3 } as React.CSSProperties}>
+          Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+          ab illo inventore veritatis et quasi architecto beatae vitae dicta
+          sunt explicabo.
         </p>
         <p style={{ "--stagger": 4 } as React.CSSProperties}>
           Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -53,20 +58,25 @@ function EntryAnimation() {
 
 const templateCode = `\
   <div className="stagger-enter space-y-6">
-    <p>This is an example:</p>
-    <p style={{ "--stagger": 1 } as React.CSSProperties}>
+    <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
       eiusmod tempor incididunt ut labore et dolore magna aliqua.
     </p>
-    <p style={{ "--stagger": 2 } as React.CSSProperties}>
+    <p style={{ "--stagger": 1 } as React.CSSProperties}>
       Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris
       nisi ut aliquip ex ea commodo consequat.
     </p>
-    <p style={{ "--stagger": 3 } as React.CSSProperties}>
+    <p style={{ "--stagger": 2 } as React.CSSProperties}>
       Duis aute irure dolor in reprehenderit in voluptate velit esse cillum
       dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
       proident, sunt in culpa qui officia deserunt mollit anim id est
       laborum.
+    </p>
+    <p style={{ "--stagger": 3 } as React.CSSProperties}>
+      Sed ut perspiciatis unde omnis iste natus error sit voluptatem
+      accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
+      ab illo inventore veritatis et quasi architecto beatae vitae dicta
+      sunt explicabo.
     </p>
     <p style={{ "--stagger": 4 } as React.CSSProperties}>
       Sed ut perspiciatis unde omnis iste natus error sit voluptatem
@@ -105,7 +115,7 @@ function Demo() {
       <Button
         variant="secondary"
         iconButton
-        className="absolute right-4 top-4"
+        className="fixed right-4 top-4"
         onClick={() => {
           setRenderCount((prev) => prev + 1);
         }}
