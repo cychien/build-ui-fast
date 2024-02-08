@@ -24,31 +24,37 @@ export default function ComponentsPage() {
               name="Header"
               componentId="header"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={4}
             />
             <ComponentCard
               name="Hero"
               componentId="hero"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={3}
             />
             <ComponentCard
               name="Footer"
               componentId="footer"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={1}
             />
             <ComponentCard
               name="Grid"
               componentId="grid"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={4}
             />
             <ComponentCard
               name="多欄位排版"
               componentId="multi-columns-layout"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={4}
             />
             <ComponentCard
               name="背景"
               componentId="background"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={4}
             />
           </ComponentsGrid>
         </Row>
@@ -58,26 +64,31 @@ export default function ComponentsPage() {
               name="Button"
               componentId="button"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={2}
             />
             <ComponentCard
               name="Announcement"
               componentId="announcement"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+              variantCount={3}
             />
             <ComponentCard
               name="Tabs"
               componentId="tabs"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+              variantCount={2}
             />
             <ComponentCard
               name="Card"
               componentId="card"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677359/build-ui-fast/announcement_szelwe.png"
+              variantCount={1}
             />
             <ComponentCard
               name="可伸縮元素"
               componentId="resizable"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={1}
             />
           </ComponentsGrid>
         </Row>
@@ -91,6 +102,7 @@ export default function ComponentsPage() {
               name="進場動畫"
               componentId="entry-animation"
               // imageUrl="https://res.cloudinary.com/dgppby8lr/image/upload/v1703677916/build-ui-fast/Header-03_zlko7x.png"
+              variantCount={1}
             />
           </ComponentsGrid>
         </Row>
@@ -133,18 +145,27 @@ type ComponentCardProps = {
   name: string;
   componentId: string;
   imageUrl?: string;
+  variantCount?: number;
 };
 
-function ComponentCard({ name, componentId, imageUrl }: ComponentCardProps) {
+function ComponentCard({
+  name,
+  componentId,
+  imageUrl,
+  variantCount,
+}: ComponentCardProps) {
   return (
     <Link
       to={`/components/${componentId}`}
-      className="relative before:absolute before:-inset-2 before:-bottom-3 before:-z-10 before:rounded-xl before:hover:bg-gray-50"
+      className="relative before:absolute before:-inset-2 before:-z-10 before:rounded-xl before:hover:bg-gray-50"
     >
       <div className="relative aspect-video w-full overflow-hidden rounded-lg border border-gray-200 bg-gray-100">
         {imageUrl && <img src={imageUrl} alt="" />}
       </div>
       <div className="mt-1 text-sm font-medium md:mt-2">{name}</div>
+      {variantCount && (
+        <div className="mt-0.5 text-xs text-gray-400">{`${variantCount}樣式`}</div>
+      )}
     </Link>
   );
 }
