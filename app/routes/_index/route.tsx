@@ -101,14 +101,14 @@ export default function Index() {
           className="stagger-enter-item mt-8 text-4xl font-semibold leading-[44px] md:mt-8 md:text-center md:text-6xl md:leading-[72px]"
           style={{ "--stagger": 2 } as React.CSSProperties}
         >
-          以前所未有的速度打造 UI
+          用短短的時間，打造精緻的 UI
         </h1>
         <p
           className="stagger-enter-item mt-6 text-lg text-gray-600 md:mx-auto md:mt-8 md:max-w-3xl md:text-center md:text-xl md:leading-[150%]"
           style={{ "--stagger": 3 } as React.CSSProperties}
         >
-          一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI
-          構建指南，幫助你高速開發應用，快速實現創意想法
+          一套全面、精心製作、易於修改的 components
+          組合包，幫助你高速開發應用，快速實現創意想法
         </p>
         <div
           className="stagger-enter-item mt-8 md:mt-20 md:flex md:justify-center"
@@ -170,10 +170,10 @@ export default function Index() {
         style={{ "--stagger": 5, "--start": "300ms" } as React.CSSProperties}
       >
         <div className="font-semibold text-primary-700 md:text-center">
-          Components 特點
+          特點
         </div>
         <h2 className="mt-3 text-2xl font-semibold text-gray-700 md:text-center">
-          4 個 Build UI Fast Components 的特別之處
+          4 個 Build UI Fast 的特別之處
         </h2>
         <div className="mt-12 flex flex-wrap gap-6">
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
@@ -181,13 +181,13 @@ export default function Index() {
               <Blocks className="h-6 w-6" />
             </div>
             <div className="mt-12 text-xl font-semibold leading-normal">
-              加速開發且易於修改
+              易於修改
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
-              用過市面上大部分的 component library，有些內帶 style，有些是
-              headless，但這些工具要不太原始，要不封裝太好難以修改，因此 Build
-              UI Fast 的 component 只把最難實作的地方實作完 (動畫、RWD)，而其他
-              style 都是用 tailwindcss，隨便你怎麼改
+              市面上的 component library
+              要不太原始，要不封裝太好難以修改，因此在 Build UI Fast
+              裡，只把最難實作的地方實作完 (動畫、RWD)，而其他 style 都是用
+              Tailwind CSS，隨便你怎麼改
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">
@@ -211,8 +211,8 @@ export default function Index() {
               更新快速
             </div>
             <div className="mt-4 leading-relaxed text-gray-500">
-              這套 components 是我平時開發 side project
-              會用的工具箱，所以你可以預期 components 數量及品質都會持續成長
+              這套 components 是我平時開發 side project 會用的工具箱，你可以預期
+              components 數量及品質都會持續成長
             </div>
           </div>
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">

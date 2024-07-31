@@ -47,14 +47,14 @@ function Header() {
               <NavigationMenu.List className="hidden h-full lg:flex lg:space-x-8">
                 <NavigationMenu.Item value="product" className="flex">
                   <NavigationMenu.Trigger className="flex items-center space-x-2 font-medium text-gray-600">
-                    <span>內容</span>
+                    <span>產品</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content forceMount>
                     <AnimatePresence>
                       {activeNavItem === "product" && (
                         <motion.div
-                          className="container mx-auto flex gap-6"
+                          className="container mx-auto flex gap-6 xl:gap-12"
                           initial={{ opacity: 0, height: 0 }}
                           animate={{ opacity: 1, height: "auto" }}
                           exit={{
@@ -67,12 +67,12 @@ function Header() {
                             opacity: { delay: 0.1, duration: 0.25 },
                           }}
                         >
-                          <div className="flex flex-1 flex-col gap-6 py-8 xl:flex-row">
+                          <div className="flex flex-1 py-8 xl:pb-12">
                             <div className="flex-1 space-y-3">
                               <div className="text-sm font-semibold text-primary-600">
                                 Components
                               </div>
-                              <div className="space-y-1">
+                              <div className="grid grid-cols-1 items-start gap-x-1 gap-y-1 xl:grid-cols-2 xl:grid-rows-2 2xl:gap-y-2">
                                 <Link
                                   to="/components"
                                   className="flex space-x-4 p-3"
@@ -84,7 +84,7 @@ function Header() {
                                     </div>
                                     <div className="text-sm text-gray-600">
                                       Header, Hero, Footer,
-                                      多欄式佈局...，方便快速拉出整體 layout
+                                      多欄式佈局...，幫助快速拉出整體 layout
                                     </div>
                                   </div>
                                 </Link>
@@ -99,7 +99,7 @@ function Header() {
                                     </div>
                                     <div className="text-sm text-gray-600">
                                       Button, Announcement, Tabs, Menu,
-                                      Image...，呈現更精緻的個別組件
+                                      Image...，幫助呈現更精緻的個別組件
                                     </div>
                                   </div>
                                 </Link>
@@ -139,7 +139,7 @@ function Header() {
                                       複合 components
                                     </div>
                                     <div className="text-sm text-gray-600">
-                                      Hero section, Pricing section, FAQ
+                                      Pricing section, FAQ
                                       section...，節省用基礎 components
                                       拼裝的時間
                                     </div>
@@ -155,14 +155,14 @@ function Header() {
                                       各式效果
                                     </div>
                                     <div className="text-sm text-gray-600">
-                                      svg drawing, 入場動畫,
-                                      光暈...，讓整體視覺更上層樓
+                                      SVG Drawing, 入場動畫,
+                                      光暈...，幫助提升整體視覺
                                     </div>
                                   </div>
                                 </Link>
                               </div>
                             </div>
-                            <div className="flex-1 space-y-3">
+                            {/* <div className="flex-1 space-y-3">
                               <div className="text-sm font-semibold text-primary-600">
                                 UI 教學
                               </div>
@@ -190,7 +190,7 @@ function Header() {
                                   </div>
                                 </div>
                               </div>
-                            </div>
+                            </div> */}
                           </div>
 
                           <div className="w-2/5 bg-gray-50 px-5 py-8 lg:w-[560px] lg:flex-shrink-0">
@@ -328,7 +328,7 @@ function Header() {
                                         </div>
                                       </div>
                                     </div>
-                                    <div className="space-y-3">
+                                    {/* <div className="space-y-3">
                                       <div className="text-sm font-semibold text-primary-600">
                                         UI 教學
                                       </div>
@@ -346,7 +346,7 @@ function Header() {
                                           </div>
                                         </div>
                                       </div>
-                                    </div>
+                                    </div> */}
                                   </div>
 
                                   <div className="bg-gray-50 px-6 py-8">
