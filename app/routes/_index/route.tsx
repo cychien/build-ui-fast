@@ -28,20 +28,20 @@ export const meta: MetaFunction = () => {
     {
       name: "description",
       content:
-        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
     },
     { property: "og:title", content: "Build UI Fast" },
     {
       property: "og:description",
       content:
-        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
     },
     { property: "og:image:alt", content: "Build UI Fast" },
     { property: "twitter:title", content: "Build UI Fast" },
     {
       property: "twitter:description",
       content:
-        "一套全面、精心製作、易於修改的 components 組合包 + 多份大型 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
+        "一套全面、精心製作、易於修改的 components 組合包 + 多份 UI 構建指南，幫助你高速開發應用，快速實現創意想法",
     },
   ];
 };
@@ -101,14 +101,14 @@ export default function Index() {
           className="stagger-enter-item mt-8 text-4xl font-semibold leading-[44px] md:mt-8 md:text-center md:text-6xl md:leading-[72px]"
           style={{ "--stagger": 2 } as React.CSSProperties}
         >
-          用短短的時間，打造精緻的 UI
+          以前所未有的速度打造 UI
         </h1>
         <p
           className="stagger-enter-item mt-6 text-lg text-gray-600 md:mx-auto md:mt-8 md:max-w-3xl md:text-center md:text-xl md:leading-[150%]"
           style={{ "--stagger": 3 } as React.CSSProperties}
         >
-          一套全面、精心製作、易於修改的 components
-          組合包，幫助你高速開發應用，快速實現創意想法
+          一套全面、精心製作、易於修改的 components 組合包 + 多份 UI
+          構建指南，幫助你高速開發應用，快速實現創意想法
         </p>
         <div
           className="stagger-enter-item mt-8 md:mt-20 md:flex md:justify-center"
@@ -170,10 +170,10 @@ export default function Index() {
         style={{ "--stagger": 5, "--start": "300ms" } as React.CSSProperties}
       >
         <div className="font-semibold text-primary-700 md:text-center">
-          特點
+          Components 特點
         </div>
         <h2 className="mt-3 text-2xl font-semibold text-gray-700 md:text-center">
-          4 個 Build UI Fast 的特別之處
+          4 個 Build UI Fast Components 的特別之處
         </h2>
         <div className="mt-12 flex flex-wrap gap-6">
           <div className="min-w-[286px] flex-1 rounded border border-gray-100 bg-[#F9FAFB] p-6">

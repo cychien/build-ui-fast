@@ -20,12 +20,12 @@ import { Button } from "~/components/site/Button";
 import { cn } from "~/utils/cn";
 
 function Header() {
-  const [activeNavItem, setActiveNavItem] = React.useState<string>();
+  const [activeNavItem, setActiveNavItem] = React.useState<string | null>();
 
   return (
     <header className="relative isolate z-20">
       <NavigationMenu.Root
-        value={activeNavItem}
+        value={activeNavItem ?? undefined}
         onValueChange={(v) => setActiveNavItem(v)}
       >
         <motion.div
@@ -47,7 +47,7 @@ function Header() {
               <NavigationMenu.List className="hidden h-full lg:flex lg:space-x-8">
                 <NavigationMenu.Item value="product" className="flex">
                   <NavigationMenu.Trigger className="flex items-center space-x-2 font-medium text-gray-600">
-                    <span>產品</span>
+                    <span>內容</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content forceMount>
@@ -74,8 +74,11 @@ function Header() {
                               </div>
                               <div className="grid grid-cols-1 items-start gap-x-1 gap-y-1 xl:grid-cols-2 xl:grid-rows-2 2xl:gap-y-2">
                                 <Link
-                                  to="/components"
+                                  to="/components#layout"
                                   className="flex space-x-4 p-3"
+                                  onClick={() => {
+                                    setActiveNavItem(null);
+                                  }}
                                 >
                                   <Layout className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
@@ -89,8 +92,11 @@ function Header() {
                                   </div>
                                 </Link>
                                 <Link
-                                  to="/components"
+                                  to="/components#basic"
                                   className="flex space-x-4 p-3"
+                                  onClick={() => {
+                                    setActiveNavItem(null);
+                                  }}
                                 >
                                   <Cuboid className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
@@ -104,8 +110,11 @@ function Header() {
                                   </div>
                                 </Link>
                                 <Link
-                                  to="/components"
+                                  to="/components#composite"
                                   className="flex space-x-4 p-3"
+                                  onClick={() => {
+                                    setActiveNavItem(null);
+                                  }}
                                 >
                                   <svg
                                     xmlns="http://www.w3.org/2000/svg"
@@ -146,8 +155,11 @@ function Header() {
                                   </div>
                                 </Link>
                                 <Link
-                                  to="/components"
+                                  to="/components#effect"
                                   className="flex space-x-4 p-3"
+                                  onClick={() => {
+                                    setActiveNavItem(null);
+                                  }}
                                 >
                                   <Sparkles className="h-6 w-6 flex-shrink-0 text-primary-600" />
                                   <div className="space-y-1">
@@ -266,7 +278,7 @@ function Header() {
                             <Accordion.Root type="single" collapsible>
                               <Accordion.Item value="item-1">
                                 <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50">
-                                  <span>產品</span>
+                                  <span>內容</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
                                 <Accordion.Content className="-mx-3 overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">

@@ -18,7 +18,11 @@ export default function ComponentsPage() {
       </div>
 
       <div className="divide-y divide-gray-200 md:grid md:grid-cols-[220px_1fr] md:gap-x-16 lg:grid-cols-[260px_1fr] xl:grid-cols-[300px_1fr]">
-        <Row name="佈局用 components" description="快速拉出整體 layout">
+        <Row
+          id="layout"
+          name="佈局用 components"
+          description="快速拉出整體 layout"
+        >
           <ComponentsGrid>
             <ComponentCard
               name="Header"
@@ -58,7 +62,11 @@ export default function ComponentsPage() {
             />
           </ComponentsGrid>
         </Row>
-        <Row name="基礎 components" description="呈現更精緻的個別組件">
+        <Row
+          id="basic"
+          name="基礎 components"
+          description="呈現更精緻的個別組件"
+        >
           <ComponentsGrid>
             <ComponentCard
               name="Button"
@@ -93,10 +101,11 @@ export default function ComponentsPage() {
           </ComponentsGrid>
         </Row>
         <Row
+          id="composite"
           name="複合 components"
           description="節省用基礎 components 拼裝的時間"
         ></Row>
-        <Row name="各式效果" description="讓整體視覺更上層樓">
+        <Row id="effect" name="各式效果" description="讓整體視覺更上層樓">
           <ComponentsGrid>
             <ComponentCard
               name="進場動畫"
@@ -114,12 +123,16 @@ export default function ComponentsPage() {
 type RowProps = {
   name: string;
   description: string;
+  id: string;
   children?: React.ReactNode;
 };
 
-function Row({ name, description, children }: RowProps) {
+function Row({ name, description, id, children }: RowProps) {
   return (
-    <div className="py-12 first-of-type:pt-6 max-md:space-y-8 md:col-span-2 md:grid md:grid-cols-subgrid xl:first-of-type:pt-12">
+    <div
+      id={id}
+      className="py-12 first-of-type:pt-6 max-md:space-y-8 md:col-span-2 md:grid md:grid-cols-subgrid xl:first-of-type:pt-12"
+    >
       <div className="relative top-1">
         <h2 className="text-lg font-semibold">{name}</h2>
         <p className="mt-3 text-sm text-gray-600">{description}</p>
