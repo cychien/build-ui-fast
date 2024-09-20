@@ -1,3 +1,4 @@
+import { Badge } from "../Badge";
 import * as Accordion from "@radix-ui/react-accordion";
 import * as Dialog from "@radix-ui/react-dialog";
 import * as NavigationMenu from "@radix-ui/react-navigation-menu";
@@ -21,6 +22,7 @@ import { cn } from "~/utils/cn";
 
 function Header() {
   const [activeNavItem, setActiveNavItem] = React.useState<string | null>();
+  const [open, setOpen] = React.useState(false);
 
   return (
     <header className="relative isolate z-20">
@@ -47,7 +49,7 @@ function Header() {
               <NavigationMenu.List className="hidden h-full lg:flex lg:space-x-8">
                 <NavigationMenu.Item value="product" className="flex">
                   <NavigationMenu.Trigger className="flex items-center space-x-2 font-medium text-gray-600">
-                    <span>內容</span>
+                    <span>Components</span>
                     <ChevronDown className="h-4 w-4 flex-shrink-0" />
                   </NavigationMenu.Trigger>
                   <NavigationMenu.Content forceMount>
@@ -69,9 +71,6 @@ function Header() {
                         >
                           <div className="flex flex-1 py-8 xl:pb-12">
                             <div className="flex-1 space-y-3">
-                              <div className="text-sm font-semibold text-primary-600">
-                                Components
-                              </div>
                               <div className="grid grid-cols-1 items-start gap-x-1 gap-y-1 xl:grid-cols-2 xl:grid-rows-2 2xl:gap-y-2">
                                 <Link
                                   to="/components#layout"
@@ -234,6 +233,17 @@ function Header() {
                     FAQ
                   </a>
                 </NavigationMenu.Item> */}
+                <NavigationMenu.Item value="faq" className="flex items-center">
+                  <a
+                    href="#"
+                    className="pointer-events-none flex items-center space-x-1 font-medium text-gray-600"
+                  >
+                    <span>UI 構建指南</span>
+                    <Badge className="bg-primary-100 text-primary-500">
+                      未開放
+                    </Badge>
+                  </a>
+                </NavigationMenu.Item>
               </NavigationMenu.List>
             </div>
 
@@ -246,7 +256,7 @@ function Header() {
 
             <div className="flex flex-1 items-center justify-end space-x-3 lg:hidden">
               {/* <Button>立即購買</Button> */}
-              <Dialog.Root>
+              <Dialog.Root open={open} onOpenChange={setOpen}>
                 <Dialog.Trigger asChild>
                   <Button variant="ghost" iconButton>
                     <span className="sr-only">打開主選單</span>
@@ -278,29 +288,44 @@ function Header() {
                             <Accordion.Root type="single" collapsible>
                               <Accordion.Item value="item-1">
                                 <Accordion.Trigger className="relative z-10 flex h-full w-full items-center justify-between rounded-lg bg-white px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50">
-                                  <span>內容</span>
+                                  <span>Components</span>
                                   <ChevronDown className="h-5 w-5 flex-shrink-0" />
                                 </Accordion.Trigger>
                                 <Accordion.Content className="-mx-3 overflow-hidden data-[state=closed]:animate-accordion-up data-[state=open]:animate-accordion-down">
-                                  <div className="space-y-6 px-6 py-6">
-                                    <div className="space-y-3">
-                                      <div className="text-sm font-semibold text-primary-600">
-                                        Components
-                                      </div>
+                                  <div className="space-y-6 px-6 py-3">
+                                    <div className="space-y-3 px-4">
                                       <div className="space-y-1">
-                                        <div className="flex space-x-4 py-3">
+                                        <Link
+                                          to="/components#layout"
+                                          className="flex space-x-4 py-2"
+                                          onClick={() => {
+                                            setOpen(false);
+                                          }}
+                                        >
                                           <Layout className="h-6 w-6 flex-shrink-0 text-primary-600" />
-                                          <div className="font-semibold">
+                                          <div className="font-medium">
                                             佈局用 components
                                           </div>
-                                        </div>
-                                        <div className="flex space-x-4 py-3">
+                                        </Link>
+                                        <Link
+                                          to="/components#basic"
+                                          className="flex space-x-4 py-2"
+                                          onClick={() => {
+                                            setOpen(false);
+                                          }}
+                                        >
                                           <Cuboid className="h-6 w-6 flex-shrink-0 text-primary-600" />
-                                          <div className="font-semibold">
+                                          <div className="font-medium">
                                             基礎 components
                                           </div>
-                                        </div>
-                                        <div className="flex space-x-4 py-3">
+                                        </Link>
+                                        <Link
+                                          to="/components#composite"
+                                          className="flex space-x-4 py-2"
+                                          onClick={() => {
+                                            setOpen(false);
+                                          }}
+                                        >
                                           <svg
                                             xmlns="http://www.w3.org/2000/svg"
                                             width="24"
@@ -328,16 +353,22 @@ function Header() {
                                             <path d="M8 15v6" />
                                             <path d="M8 3v6" />
                                           </svg>
-                                          <div className="font-semibold">
+                                          <div className="font-medium">
                                             複合 components
                                           </div>
-                                        </div>
-                                        <div className="flex space-x-4 py-3">
+                                        </Link>
+                                        <Link
+                                          to="/components#effect"
+                                          className="flex space-x-4 py-2"
+                                          onClick={() => {
+                                            setOpen(false);
+                                          }}
+                                        >
                                           <Sparkles className="h-6 w-6 flex-shrink-0 text-primary-600" />
-                                          <div className="font-semibold">
+                                          <div className="font-medium">
                                             各式效果
                                           </div>
-                                        </div>
+                                        </Link>
                                       </div>
                                     </div>
                                     {/* <div className="space-y-3">
@@ -361,17 +392,14 @@ function Header() {
                                     </div> */}
                                   </div>
 
-                                  <div className="bg-gray-50 px-6 py-8">
-                                    {/* <div className="text-primary-600 text-sm font-semibold">
-                                      如何開始
-                                    </div> */}
+                                  {/* <div className="mx-10 rounded bg-gray-50 px-6 py-4">  
                                     <div className="flex">
                                       🚧
-                                      <div className="ml-3 font-medium text-gray-500">
+                                      <div className="ml-3 text-sm font-medium text-gray-500">
                                         產品製作中，加入 waitlist 取得最新更新
                                       </div>
                                     </div>
-                                  </div>
+                                  </div> */}
                                 </Accordion.Content>
                               </Accordion.Item>
                             </Accordion.Root>
@@ -392,6 +420,14 @@ function Header() {
                               FAQ
                             </a>
                           </NavigationMenu.Item> */}
+                          <NavigationMenu.Item>
+                            <a
+                              href="#"
+                              className="-mx-3 block h-full rounded-lg px-3 py-2 font-medium text-gray-700 transition-colors hover:bg-gray-50"
+                            >
+                              UI 構建指南
+                            </a>
+                          </NavigationMenu.Item>
                         </NavigationMenu.List>
                         {/* <div className="py-6">
                           <a
